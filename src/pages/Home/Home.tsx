@@ -1,6 +1,9 @@
-import React from 'react';
+import { CoinsData } from '../../context/CoinContext';
 
 const home = () => {
+	const { coins, loading } = CoinsData();
+	console.log(coins);
+
 	return <div>home</div>;
 };
 
