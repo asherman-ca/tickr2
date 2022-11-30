@@ -6,12 +6,13 @@ import { ToastContainer } from 'react-toastify';
 import { CoinContextProvider } from './context/CoinContext';
 import Home from './pages/Home/Home';
 import Account from './components/Account';
+import Nav from './components/Nav';
 
 function App() {
 	return (
 		<>
 			<CoinContextProvider>
-				<div>Nav</div>
+				<Nav />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/signup' element={<h1>sign up</h1>} />
