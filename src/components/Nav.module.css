@@ -1,4 +1,33 @@
 .nav {
+	padding: 1rem;
+
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+
+	border-bottom: 1px solid var(--grey-border);
+}
+
+.col {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+.brand {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--clr-blk-button);
+}
+
+.brand i {
+	margin-right: 0.5rem;
+
+	font-size: 1.75rem;
+	color: var(--clr-blue);
+	transition: transform 0.65s cubic-bezier(0.8, -0.8, 0.2, 1.8) 0s;
+}
+
+.brand:hover i {
+	transform: rotate(360deg);
 }

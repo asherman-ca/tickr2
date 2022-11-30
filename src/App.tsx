@@ -1,12 +1,12 @@
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { CoinContextProvider } from './context/CoinContext';
 import Home from './pages/Home/Home';
 import Account from './components/Account';
 import Nav from './components/Nav';
+import './App.css';
 
 function App() {
 	return (
