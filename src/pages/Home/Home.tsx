@@ -1,15 +1,33 @@
+import { useEffect, useState, useMemo } from 'react';
+
 import { CoinsData } from '../../context/CoinContext';
+import styles from './Home.module.css';
+const { container } = styles;
+
+const rowsPerPageOptions = [10, 25, 50, 100];
 
 const home = () => {
 	const { coins, loading } = CoinsData();
-	console.log('loading', loading);
+	const [displayCoins, setDisplayCoins] = useState<any[]>(coins);
+	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
+
 	console.log('coins', coins);
+	console.log('loading', loading);
+
+	// useEffect(() => {
+	// 	setDisplayCoins(coins);
+	// }, [coins]);
 
 	if (loading) {
-		return <h1>loading</h1>;
+		return <div>loading</div>;
 	}
 
-	return <div>home</div>;
+	return (
+		<div className={`${container}`}>
+			<div>top</div>
+			<div>bottom</div>
+		</div>
+	);
 };
 
 export default home;
