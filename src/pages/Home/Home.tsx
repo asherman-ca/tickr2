@@ -5,6 +5,7 @@ import { coin } from '../../utils/types';
 import { CoinsData } from '../../context/CoinContext';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
+import TrendingCard from './components/TrendingCard';
 const { trending, body, header, homeContainer, subHeader } = styles;
 
 const rowsPerPageOptions = [10, 25, 50, 100];
@@ -16,7 +17,6 @@ const home = () => {
 
 	useEffect(() => {
 		setDisplayCoins(coins);
-		console.log('global', global);
 	}, [coins]);
 
 	if (loading) {
@@ -26,6 +26,8 @@ const home = () => {
 			</div>
 		);
 	}
+
+	const trendingCoins = [...displayCoins];
 
 	return (
 		<div className={`${homeContainer} container`}>
@@ -47,8 +49,26 @@ const home = () => {
 				</div>
 			</div>
 			<div className={`${trending}`}>
-				<div>Daily Trends</div>
-				<div>7 Day Trends</div>
+				<TrendingCard
+					title='Daily Trends'
+					coins={trendingCoins
+						.sort(
+							(a, b) =>
+								Math.abs(b.market_data.price_change_percentage_24h) -
+								Math.abs(a.market_data.price_change_percentage_24h)
+						)
+						.slice(0, 5)}
+				/>
+				<TrendingCard
+					title='Weekly Trends'
+					coins={trendingCoins
+						.sort(
+							(a, b) =>
+								Math.abs(b.market_data.price_change_percentage_7d) -
+								Math.abs(a.market_data.price_change_percentage_7d)
+						)
+						.slice(0, 5)}
+				/>
 			</div>
 			<div className={`${body}`}>
 				{displayCoins.map((coin) => {

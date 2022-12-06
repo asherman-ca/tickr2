@@ -1,7 +1,10 @@
 export type coin = {
 	id: string;
-	image: object;
-	market_data: object;
+	image: {};
+	market_data: {
+		price_change_percentage_24h: number;
+		price_change_percentage_7d: number;
+	};
 	name: string;
 	symbol: string;
 };
