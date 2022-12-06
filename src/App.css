@@ -68,6 +68,8 @@ select {
 	--clr-buy: #44af69;
 	--clr-sell: #f8333c;
 	--reddit: #ff4500;
+
+	--grey-text: rgb(88, 102, 126);
 }
 
 #root {
@@ -82,9 +84,22 @@ body {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+h1 {
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
 .container {
 	flex: 1;
 
 	display: flex;
 	flex-direction: column;
+}
+
+.neg {
+	color: var(--clr-sell);
+}
+
+.pos {
+	color: var(--clr-buy);
 }

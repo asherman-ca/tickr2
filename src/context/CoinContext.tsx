@@ -1,16 +1,23 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { coin } from '../utils/types';
+import { coin, global } from '../utils/types';
 
 interface AppContextInterface {
-	coins: any[];
-	global: {};
+	coins: coin[];
+	global: global;
 	loading: boolean;
 }
 const CoinContext = createContext<AppContextInterface | null>(null);
 
 export const CoinContextProvider = ({ children }: any) => {
 	let [coins, setCoins] = useState<coin[]>([]);
-	let [global, setGlobal] = useState<{}>({});
+	let [global, setGlobal] = useState<global>({
+		data: {
+			total_market_cap: {
+				usd: 0,
+			},
+			market_cap_change_percentage_24h_usd: 0,
+		},
+	});
 	let [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
