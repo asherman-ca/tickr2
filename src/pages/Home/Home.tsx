@@ -4,29 +4,33 @@ import { coin } from '../../utils/types';
 import { CoinsData } from '../../context/CoinContext';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
-const { container, header, body } = styles;
+const { trending, body, header, homeContainer } = styles;
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
 const home = () => {
-	const { coins, loading } = CoinsData();
-	const [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
-	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
-
-	// console.log('coins', coins);
-	// console.log('loading', loading);
+	const { coins, loading, global } = CoinsData();
+	let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
+	let [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
 
 	useEffect(() => {
 		setDisplayCoins(coins);
 	}, [coins]);
 
 	if (loading) {
-		return <div>loading</div>;
+		return (
+			<div className={`${homeContainer} container`}>
+				<div>loading</div>
+			</div>
+		);
 	}
 
 	return (
-		<div className={`${container}`}>
+		<div className={`${homeContainer} container`}>
 			<div className={`${header}`}>
+				Today's Cryptocurrency Prices by Market Cap
+			</div>
+			<div className={`${trending}`}>
 				<div>Daily Trends</div>
 				<div>7 Day Trends</div>
 			</div>
