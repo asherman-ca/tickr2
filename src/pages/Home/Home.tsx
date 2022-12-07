@@ -50,6 +50,7 @@ const home = () => {
 			</div>
 			<div className={`${trending}`}>
 				<TrendingCard
+					trend='daily'
 					title='Daily Trends'
 					coins={trendingCoins
 						.sort(
@@ -60,12 +61,24 @@ const home = () => {
 						.slice(0, 5)}
 				/>
 				<TrendingCard
+					trend='weekly'
 					title='Weekly Trends'
 					coins={trendingCoins
 						.sort(
 							(a, b) =>
 								Math.abs(b.market_data.price_change_percentage_7d) -
 								Math.abs(a.market_data.price_change_percentage_7d)
+						)
+						.slice(0, 5)}
+				/>
+				<TrendingCard
+					trend='monthly'
+					title='Monthly Trends'
+					coins={trendingCoins
+						.sort(
+							(a, b) =>
+								Math.abs(b.market_data.price_change_percentage_30d) -
+								Math.abs(a.market_data.price_change_percentage_30d)
 						)
 						.slice(0, 5)}
 				/>

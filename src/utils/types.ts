@@ -1,9 +1,12 @@
 export type coin = {
 	id: string;
-	image: {};
+	image: {
+		thumb: string;
+	};
 	market_data: {
 		price_change_percentage_24h: number;
 		price_change_percentage_7d: number;
+		price_change_percentage_30d: number;
 	};
 	name: string;
 	symbol: string;

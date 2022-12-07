@@ -108,3 +108,7 @@ h3 {
 .pos {
 	color: var(--clr-buy);
 }
+
+.blue {
+	color: var(--clr-blue);
+}

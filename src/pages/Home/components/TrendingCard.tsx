@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { numberParse } from '../../../utils/numbers';
 import { coin } from '../../../utils/types';
 import styles from '../Home.module.css';
@@ -8,17 +7,27 @@ const { trendingCoin, subHeader, trendingCoins, trendingCoinTitle } = styles;
 type trendingCardProps = {
 	coins: coin[];
 	title: string;
+	trend: string;
 };
 
-const TrendingCard = ({ coins, title }: trendingCardProps) => {
-	console.log('trend coins', coins);
+type TrendColors = {
+	daily: string;
+	weekly: string;
+	monthly: string;
+};
+
+const trendColors: TrendColors = {
+	daily: 'fa-fire neg',
+	weekly: 'fa-calendar-week blue',
+	monthly: 'fa-calendar-days',
+};
+
+const TrendingCard = ({ coins, title, trend }: trendingCardProps) => {
 	return (
 		<div>
 			<h3>
 				<i
-					className={`${
-						title.includes('Daily') ? 'fa-fire neg' : 'fa-calendar-week'
-					} fa-solid`}
+					className={`${trendColors[trend as keyof TrendColors]} fa-solid`}
 				></i>
 				{title}
 			</h3>
@@ -30,7 +39,7 @@ const TrendingCard = ({ coins, title }: trendingCardProps) => {
 								<div className={`${subHeader}`}>{idx + 1}</div>
 								<div className={`${trendingCoinTitle}`}>
 									<img src={coin.image.thumb} alt='' />
-									{coin.id}
+									{coin.name}
 								</div>
 							</div>
 							<div
