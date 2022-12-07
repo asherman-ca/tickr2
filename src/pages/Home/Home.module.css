@@ -31,7 +31,7 @@
 
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 1rem;
 	flex: 1;
 
 	background: white;
@@ -46,9 +46,35 @@
 	align-items: center;
 }
 
-.trending > div:nth-child(2) {
-	/* border-left: 1px solid var(--grey-border); */
-	/* padding-left: 2rem; */
+/* .trending > div:nth-child(2) {
+	border-left: 1px solid var(--grey-border);
+	padding-left: 2rem;
+} */
+
+.trendingCoins {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.trendingCoin {
+	display: flex;
+	justify-content: space-between;
+}
+
+.trendingCoin > div:first-child {
+	display: flex;
+	gap: 1rem;
+}
+
+.trendingCoinTitle {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.trendingCoinTitle img {
+	border-radius: 50%;
 }
 
 .body {
