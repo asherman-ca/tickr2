@@ -6,6 +6,7 @@ import { CoinsData } from '../../context/CoinContext';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
 import TrendingCard from './components/TrendingCard';
+import Spinner from '../../components/Spinner';
 const { trending, body, header, homeContainer, subHeader } = styles;
 
 const rowsPerPageOptions = [10, 25, 50, 100];
@@ -22,7 +23,8 @@ const home = () => {
 	if (loading) {
 		return (
 			<div className={`${homeContainer} container`}>
-				<div>loading</div>
+				<Spinner />
+				{/* <div>loading</div> */}
 			</div>
 		);
 	}
