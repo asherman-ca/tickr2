@@ -21,6 +21,10 @@
 	color: var(--grey-text);
 }
 
+.subHeader span {
+	/* margin: 0 0.5rem; */
+}
+
 .trending {
 	margin-bottom: 1rem;
 

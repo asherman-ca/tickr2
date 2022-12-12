@@ -43,7 +43,7 @@ const home = () => {
 				<h1>Today's Cryptocurrency Prices by Market Cap</h1>
 				<div className={`${subHeader}`}>
 					The global crypto market cap is{' '}
-					{moneyParse(global.data.total_market_cap.usd)}, a{' '}
+					{moneyParse(global.data.total_market_cap.usd)}, a&nbsp;
 					<span
 						className={
 							global.data.market_cap_change_percentage_24h_usd < 0
@@ -52,8 +52,8 @@ const home = () => {
 						}
 					>
 						{numberParse(global.data.market_cap_change_percentage_24h_usd)}%
-					</span>{' '}
-					change over 24 hours.
+					</span>
+					&nbsp;change over 24 hours.
 				</div>
 			</div>
 			<Trending coins={[...coins]} />
