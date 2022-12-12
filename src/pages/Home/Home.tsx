@@ -5,7 +5,8 @@ import { coin } from '../../utils/types';
 import { CoinsData } from '../../context/CoinContext';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
-import TrendingCard from './components/TrendingCard';
+import Trending from './components/Trending';
+// import TrendingCard from './components/TrendingCard';
 import Spinner from '../../components/Spinner';
 const { trending, body, header, homeContainer, subHeader } = styles;
 
@@ -24,12 +25,9 @@ const home = () => {
 		return (
 			<div className={`${homeContainer} container`}>
 				<Spinner />
-				{/* <div>loading</div> */}
 			</div>
 		);
 	}
-
-	const trendingCoins = [...displayCoins];
 
 	return (
 		<div className={`${homeContainer} container`}>
@@ -50,42 +48,9 @@ const home = () => {
 					change over 24 hours.
 				</div>
 			</div>
-			<div className={`${trending}`}>
-				<TrendingCard
-					trend='daily'
-					title='Daily Trends'
-					coins={trendingCoins
-						.sort(
-							(a, b) =>
-								Math.abs(b.market_data.price_change_percentage_24h) -
-								Math.abs(a.market_data.price_change_percentage_24h)
-						)
-						.slice(0, 5)}
-				/>
-				<TrendingCard
-					trend='weekly'
-					title='Weekly Trends'
-					coins={trendingCoins
-						.sort(
-							(a, b) =>
-								Math.abs(b.market_data.price_change_percentage_7d) -
-								Math.abs(a.market_data.price_change_percentage_7d)
-						)
-						.slice(0, 5)}
-				/>
-				<TrendingCard
-					trend='monthly'
-					title='Monthly Trends'
-					coins={trendingCoins
-						.sort(
-							(a, b) =>
-								Math.abs(b.market_data.price_change_percentage_30d) -
-								Math.abs(a.market_data.price_change_percentage_30d)
-						)
-						.slice(0, 5)}
-				/>
-			</div>
+			<Trending coins={coins} />
 			<div className={`${body}`}>
+				<div className='coinListHeader'></div>
 				{displayCoins.map((coin) => {
 					return <CoinItem key={coin.id} coin={coin} />;
 				})}

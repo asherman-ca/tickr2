@@ -73,9 +73,12 @@ select {
 }
 
 #root {
-	min-height: 100vh;
+	height: 100vh;
+
 	display: flex;
 	flex-direction: column;
+
+	/* overflow-y: overlay; */
 }
 
 body {
@@ -95,10 +98,15 @@ h3 {
 }
 
 .container {
-	flex: 1;
-
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	flex-basis: 100%;
+
+	background: linear-gradient(
+		rgb(248, 250, 253) 0%,
+		rgba(248, 250, 253, 0) 413px
+	);
 }
 
 .neg {
