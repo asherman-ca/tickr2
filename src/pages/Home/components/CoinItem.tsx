@@ -8,7 +8,7 @@ type CoinItemProps = {
 
 const CoinItem = ({ coin }: CoinItemProps) => {
 	return (
-		<div className={`${coinItem}`} id={coin.id}>
+		<div className={`${coinItem}`} key={coin.id}>
 			<div className={`${coinItemTitle}`}>
 				<div>
 					<i className='fa-regular fa-star'></i>#

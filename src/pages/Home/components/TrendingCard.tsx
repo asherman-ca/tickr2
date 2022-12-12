@@ -5,7 +5,7 @@ import styles from '../Home.module.css';
 const { trendingCoin, subHeader, trendingCoins, trendingCoinTitle } = styles;
 
 type trendingCardProps = {
-	coins: coin[];
+	coins: any[];
 	title: string;
 	trend: string;
 };
@@ -23,10 +23,6 @@ const trendColors: TrendColors = {
 };
 
 const TrendingCard = ({ coins, title, trend }: trendingCardProps) => {
-	// console.log(title);
-	// {
-	// 	console.log('coins', coins);
-	// }
 	return (
 		<div>
 			<h3>
@@ -38,22 +34,16 @@ const TrendingCard = ({ coins, title, trend }: trendingCardProps) => {
 			<div className={`${trendingCoins}`}>
 				{coins.map((coin, idx) => {
 					return (
-						<div className={`${trendingCoin}`} id={`${coin.id} + ${idx}`}>
+						<div className={`${trendingCoin}`} key={`${trend} ${coin.name}`}>
 							<div>
 								<div className={`${subHeader}`}>{idx + 1}</div>
 								<div className={`${trendingCoinTitle}`}>
-									<img src={coin.image.thumb} alt='' />
+									<img src={coin.image} alt='' />
 									{coin.name}
 								</div>
 							</div>
-							<div
-								className={
-									coin.market_data.price_change_percentage_24h > 0
-										? 'pos'
-										: 'neg'
-								}
-							>
-								{numberParse(coin.market_data.price_change_percentage_24h)}%
+							<div className={coin.changeVal > 0 ? 'pos' : 'neg'}>
+								{numberParse(coin.changeVal)}%
 							</div>
 						</div>
 					);
