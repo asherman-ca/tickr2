@@ -8,7 +8,15 @@ import styles from './Home.module.css';
 import Trending from './components/Trending';
 // import TrendingCard from './components/TrendingCard';
 import Spinner from '../../components/Spinner';
-const { trending, body, header, homeContainer, subHeader } = styles;
+const {
+	trending,
+	body,
+	header,
+	homeContainer,
+	subHeader,
+	coinListHeader,
+	coinItems,
+} = styles;
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
@@ -50,10 +58,25 @@ const home = () => {
 			</div>
 			<Trending coins={coins} />
 			<div className={`${body}`}>
-				<div className='coinListHeader'></div>
-				{displayCoins.map((coin) => {
-					return <CoinItem key={coin.id} coin={coin} />;
-				})}
+				<div className={`${coinListHeader}`}>
+					<div>
+						<div>
+							<i className='fa-regular fa-star'></i>#
+						</div>
+						<div>Name</div>
+					</div>
+					<div>Price</div>
+					<div>1h %</div>
+					<div>24h %</div>
+					<div>7d %</div>
+					<div>Market Cap</div>
+					<div>Volume(24h)</div>
+				</div>
+				<div className={`${coinItems}`}>
+					{displayCoins.map((coin) => {
+						return <CoinItem key={coin.id} coin={coin} />;
+					})}
+				</div>
 			</div>
 		</div>
 	);

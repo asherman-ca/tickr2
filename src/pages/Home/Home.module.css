@@ -2,6 +2,8 @@
 	padding: 2rem 3rem;
 
 	gap: 2rem;
+
+	/* overflow-y: hidden; */
 }
 
 .header {
@@ -76,9 +78,59 @@
 }
 
 .body {
+	/* position: relative; */
+
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+
+	/* overflow-y: overlay; */
+}
+
+.coinListHeader {
+	position: sticky;
+	top: 0;
+	padding: 1rem 0;
+
+	display: flex;
+	flex-direction: row;
+	font-weight: 700;
+
+	background: white;
+}
+
+.coinListHeader > div {
+	text-align: right;
+	flex-basis: 100%;
+}
+
+.coinListHeader div:first-child {
+	display: flex;
+	gap: 1rem;
+	/* justify-content: flex-start; */
+	/* gap: 0.5rem; */
+}
+
+.coinListHeader div:first-child > div {
+	text-align: left;
+}
+
+.coinListHeader div:first-child > i {
+	visibility: hidden;
+}
+
+.coinListHeader > div:first-child > div:first-child {
+	display: flex;
+	justify-content: space-between;
+	flex: 1;
+}
+
+.coinListHeader > div:first-child > div:last-child {
+	flex: 3;
+}
+
+.coinItems {
+	margin-top: 2rem;
 }
 
 @media screen and (max-width: 768px) {
