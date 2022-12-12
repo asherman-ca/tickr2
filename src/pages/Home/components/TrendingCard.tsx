@@ -23,6 +23,10 @@ const trendColors: TrendColors = {
 };
 
 const TrendingCard = ({ coins, title, trend }: trendingCardProps) => {
+	// console.log(title);
+	// {
+	// 	console.log('coins', coins);
+	// }
 	return (
 		<div>
 			<h3>
@@ -34,7 +38,7 @@ const TrendingCard = ({ coins, title, trend }: trendingCardProps) => {
 			<div className={`${trendingCoins}`}>
 				{coins.map((coin, idx) => {
 					return (
-						<div className={`${trendingCoin}`}>
+						<div className={`${trendingCoin}`} id={`${coin.id} + ${idx}`}>
 							<div>
 								<div className={`${subHeader}`}>{idx + 1}</div>
 								<div className={`${trendingCoinTitle}`}>

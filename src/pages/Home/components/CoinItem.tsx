@@ -7,12 +7,8 @@ type CoinItemProps = {
 };
 
 const CoinItem = ({ coin }: CoinItemProps) => {
-	{
-		console.log('coin', coin);
-	}
-
 	return (
-		<div className={`${coinItem}`}>
+		<div className={`${coinItem}`} id={coin.id}>
 			<div className={`${coinItemTitle}`}>
 				<div>
 					<i className='fa-regular fa-star'></i>#

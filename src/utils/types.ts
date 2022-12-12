@@ -7,6 +7,7 @@ export type coin = {
 		price_change_percentage_24h: number;
 		price_change_percentage_7d: number;
 		price_change_percentage_30d: number;
+		market_cap_rank: number;
 	};
 	name: string;
 	symbol: string;

@@ -25,9 +25,9 @@ const home = () => {
 	let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
 	let [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
 
-	useEffect(() => {
-		setDisplayCoins(coins);
-	}, [coins]);
+	useEffect(() => setDisplayCoins(coins), [coins]);
+
+	// coins.sort((a, b) => b.market_data.market_cap_rank - a.market_data.market_cap_rank)
 
 	if (loading) {
 		return (
@@ -56,7 +56,7 @@ const home = () => {
 					change over 24 hours.
 				</div>
 			</div>
-			<Trending coins={coins} />
+			<Trending coins={[...coins]} />
 			<div className={`${body}`}>
 				<div className={`${coinListHeader}`}>
 					<div>
