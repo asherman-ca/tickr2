@@ -1,15 +1,18 @@
 import { useMemo } from 'react';
+import { coin } from '../../utils/types';
 
-export const displayCoins = ({ coins, loading, sortParam }) => {
+export const displayCoinsMemo = (
+	coins: coin[],
+	loading: boolean,
+	sortParam: { type: string; direction: string }
+) => {
 	return useMemo(() => {
 		if (sortParam.type === 'mcap') {
 			if (sortParam.direction === 'desc') {
-				console.log('hits', sortParam);
 				return coins.sort((a, b) => {
 					return a.market_data.market_cap_rank - b.market_data.market_cap_rank;
 				});
 			} else {
-				console.log('hits', sortParam);
 				return coins.sort((a, b) => {
 					return b.market_data.market_cap_rank - a.market_data.market_cap_rank;
 				});

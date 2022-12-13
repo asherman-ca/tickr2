@@ -1,15 +1,12 @@
-import { useEffect, useState, useMemo } from 'react';
-
+import { useState } from 'react';
 import { numberParse, moneyParse } from '../../utils/numbers';
-import { coin } from '../../utils/types';
 import { CoinsData } from '../../context/CoinContext';
+import { coin } from '../../utils/types';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
 import Trending from './components/Trending';
-// import TrendingCard from './components/TrendingCard';
 import Spinner from '../../components/Spinner';
 const {
-	trending,
 	body,
 	header,
 	homeContainer,
@@ -18,6 +15,8 @@ const {
 	coinItems,
 	coinHeaderTitle,
 } = styles;
+
+import { displayCoinsMemo } from './HomeActions';
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
@@ -31,22 +30,7 @@ const home = () => {
 		type: 'mcap',
 		direction: 'desc',
 	});
-	const displayCoins = useMemo(() => {
-		if (sortParam.type === 'mcap') {
-			if (sortParam.direction === 'desc') {
-				console.log('hits', sortParam);
-				return coins.sort((a, b) => {
-					return a.market_data.market_cap_rank - b.market_data.market_cap_rank;
-				});
-			} else {
-				console.log('hits', sortParam);
-				return coins.sort((a, b) => {
-					return b.market_data.market_cap_rank - a.market_data.market_cap_rank;
-				});
-			}
-		}
-	}, [loading, sortParam]);
-
+	const displayCoins = displayCoinsMemo(coins, loading, sortParam);
 	// let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
 	// useEffect(() => setDisplayCoins(coins), [loading]);
 
@@ -70,6 +54,7 @@ const home = () => {
 
 	return (
 		<div className={`${homeContainer} container`}>
+			{console.log('hits')}
 			<div className={`${header}`}>
 				<h1>Today's Cryptocurrency Prices by Market Cap</h1>
 				<div className={`${subHeader}`}>
@@ -115,7 +100,7 @@ const home = () => {
 					<button>Volume(24h)</button>
 				</div>
 				<div className={`${coinItems}`}>
-					{displayCoins!.map((coin) => {
+					{displayCoins!.map((coin: coin) => {
 						return <CoinItem key={coin.id} coin={coin} />;
 					})}
 				</div>
