@@ -16,6 +16,7 @@ const {
 	subHeader,
 	coinListHeader,
 	coinItems,
+	coinHeaderTitle,
 } = styles;
 
 const rowsPerPageOptions = [10, 25, 50, 100];
@@ -89,18 +90,29 @@ const home = () => {
 			<Trending coins={[...coins]} />
 			<div className={`${body}`}>
 				<div className={`${coinListHeader}`}>
-					<div>
+					<button className={`${coinHeaderTitle}`}>
 						<div>
 							<i className='fa-regular fa-star'></i>#
 						</div>
 						<div>Name</div>
-					</div>
-					<div>Price</div>
-					<div>1h %</div>
-					<div>24h %</div>
-					<div>7d %</div>
-					<div onClick={() => handleSort('mcap')}>Market Cap</div>
-					<div>Volume(24h)</div>
+					</button>
+					<button>Price</button>
+					<button>1h %</button>
+					<button>24h %</button>
+					<button>7d %</button>
+					<button onClick={() => handleSort('mcap')}>
+						<i
+							className={
+								sortParam.type === 'mcap'
+									? sortParam.direction === 'desc'
+										? 'fa-solid fa-circle-chevron-down'
+										: 'fa-solid fa-circle-chevron-up'
+									: 'hidden'
+							}
+						></i>
+						Market Cap
+					</button>
+					<button>Volume(24h)</button>
 				</div>
 				<div className={`${coinItems}`}>
 					{displayCoins!.map((coin) => {
