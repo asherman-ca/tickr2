@@ -21,10 +21,6 @@
 	color: var(--grey-text);
 }
 
-.subHeader span {
-	/* margin: 0 0.5rem; */
-}
-
 .trending {
 	margin-bottom: 1rem;
 
@@ -133,11 +129,6 @@
 .coinListHeader > div:first-child > div:first-child {
 	display: flex;
 	justify-content: space-between;
-	/* flex: 1; */
-}
-
-.coinListHeader > div:first-child > div:last-child {
-	/* flex: 3; */
 }
 
 .coinItem {

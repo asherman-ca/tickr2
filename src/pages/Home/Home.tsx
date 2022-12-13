@@ -22,12 +22,42 @@ const rowsPerPageOptions = [10, 25, 50, 100];
 
 const home = () => {
 	const { coins, loading, global } = CoinsData();
-	let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
-	let [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
+	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
+	const [sortParam, setSortParam] = useState<{
+		type: string;
+		direction: string;
+	}>({
+		type: 'mcap',
+		direction: 'desc',
+	});
+	const displayCoins = useMemo(() => {
+		if (sortParam.type === 'mcap') {
+			if (sortParam.direction === 'desc') {
+				console.log('hits', sortParam);
+				return coins.sort((a, b) => {
+					return a.market_data.market_cap_rank - b.market_data.market_cap_rank;
+				});
+			} else {
+				console.log('hits', sortParam);
+				return coins.sort((a, b) => {
+					return b.market_data.market_cap_rank - a.market_data.market_cap_rank;
+				});
+			}
+		}
+	}, [loading, sortParam]);
 
-	useEffect(() => setDisplayCoins(coins), [coins]);
+	// let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
+	// useEffect(() => setDisplayCoins(coins), [loading]);
 
-	// coins.sort((a, b) => b.market_data.market_cap_rank - a.market_data.market_cap_rank)
+	const handleSort = (type: string) => {
+		if (type === 'mcap') {
+			if (sortParam.direction === 'desc' && sortParam.type === 'mcap')
+				setSortParam({ type: 'mcap', direction: 'asc' });
+			else {
+				setSortParam({ type: 'mcap', direction: 'desc' });
+			}
+		}
+	};
 
 	if (loading) {
 		return (
@@ -69,11 +99,11 @@ const home = () => {
 					<div>1h %</div>
 					<div>24h %</div>
 					<div>7d %</div>
-					<div>Market Cap</div>
+					<div onClick={() => handleSort('mcap')}>Market Cap</div>
 					<div>Volume(24h)</div>
 				</div>
 				<div className={`${coinItems}`}>
-					{displayCoins.map((coin) => {
+					{displayCoins!.map((coin) => {
 						return <CoinItem key={coin.id} coin={coin} />;
 					})}
 				</div>
