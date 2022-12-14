@@ -122,7 +122,6 @@
 
 .coinHeaderTitle {
 	display: flex;
-	gap: 1rem;
 	text-align: left;
 }
 
@@ -133,6 +132,13 @@
 .coinHeaderTitle > div:first-child {
 	display: flex;
 	gap: 1rem;
+	flex: 1;
+}
+
+.coinHeaderTitle > div:last-child {
+	display: flex;
+	justify-content: flex-start;
+	flex: 1.5;
 }
 
 .coinHeaderTitle i {
@@ -160,7 +166,7 @@
 .coinItemTitle {
 	display: flex;
 	justify-content: flex-start !important;
-	gap: 1rem;
+	/* gap: 1rem; */
 	/* text-align: left; */
 	white-space: nowrap;
 	overflow: hidden;
@@ -170,14 +176,16 @@
 .coinItemTitle > div:first-child {
 	display: flex;
 	align-items: center;
-
 	gap: 1rem;
+	flex: 1;
 }
 
 .coinItemTitle > div:last-child {
 	display: flex;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 1rem;
+	flex: 1.5;
 
 	text-align: left;
 	white-space: nowrap;
