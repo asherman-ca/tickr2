@@ -91,7 +91,7 @@
 	position: sticky;
 	top: 0;
 	padding: 1rem 0;
-	margin-bottom: 1rem;
+	/* margin-bottom: 1rem; */
 
 	display: flex;
 	flex-direction: row;
@@ -141,18 +141,27 @@
 }
 
 .coinItem {
+	padding: 1rem 0;
+
 	display: flex;
+
+	border-bottom: 0.5px solid var(--grey-border);
 }
 
 .coinItem > div {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
 	flex-basis: 100%;
-	text-align: right;
+	/* text-align: right; */
 }
 
 .coinItemTitle {
 	display: flex;
+	justify-content: flex-start !important;
 	gap: 1rem;
-	text-align: left;
+	/* text-align: left; */
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: clip;
@@ -160,10 +169,16 @@
 
 .coinItemTitle > div:first-child {
 	display: flex;
+	align-items: center;
+
 	gap: 1rem;
 }
 
 .coinItemTitle > div:last-child {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
 	text-align: left;
 	white-space: nowrap;
 	overflow: hidden;

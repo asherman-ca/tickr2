@@ -142,7 +142,7 @@ const home = () => {
 					</button>
 				</div>
 				<div className={`${coinItems}`}>
-					{displayCoins!.map((coin: coin) => {
+					{displayCoins!.slice(0, 20).map((coin: coin) => {
 						return <CoinItem key={coin.id} coin={coin} />;
 					})}
 				</div>
