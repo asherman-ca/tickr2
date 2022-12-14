@@ -107,6 +107,15 @@
 	flex-basis: 100%;
 }
 
+.coinListHeader > div {
+	text-align: right;
+	flex-basis: 100%;
+}
+
+.coinListHeader > div i {
+	margin-right: 0.5rem;
+}
+
 .coinListHeader > button i {
 	margin-right: 0.5rem;
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { numberParse, moneyParse } from '../../utils/numbers';
 import { CoinsData } from '../../context/CoinContext';
 import { coin } from '../../utils/types';
+import { displayCoinsMemo, handleSort } from './HomeActions';
 import CoinItem from './components/CoinItem';
 import styles from './Home.module.css';
 import Trending from './components/Trending';
@@ -15,8 +16,6 @@ const {
 	coinItems,
 	coinHeaderTitle,
 } = styles;
-
-import { displayCoinsMemo } from './HomeActions';
 
 const rowsPerPageOptions = [10, 25, 50, 100];
 
@@ -34,15 +33,15 @@ const home = () => {
 	// let [displayCoins, setDisplayCoins] = useState<coin[]>(coins);
 	// useEffect(() => setDisplayCoins(coins), [loading]);
 
-	const handleSort = (type: string) => {
-		if (type === 'mcap') {
-			if (sortParam.direction === 'desc' && sortParam.type === 'mcap')
-				setSortParam({ type: 'mcap', direction: 'asc' });
-			else {
-				setSortParam({ type: 'mcap', direction: 'desc' });
-			}
-		}
-	};
+	// const handleSort = (type: string) => {
+	// 	if (type === 'mcap') {
+	// 		if (sortParam.direction === 'desc' && sortParam.type === 'mcap')
+	// 			setSortParam({ type: 'mcap', direction: 'asc' });
+	// 		else {
+	// 			setSortParam({ type: 'mcap', direction: 'desc' });
+	// 		}
+	// 	}
+	// };
 
 	if (loading) {
 		return (
@@ -54,7 +53,6 @@ const home = () => {
 
 	return (
 		<div className={`${homeContainer} container`}>
-			{console.log('hits')}
 			<div className={`${header}`}>
 				<h1>Today's Cryptocurrency Prices by Market Cap</h1>
 				<div className={`${subHeader}`}>
@@ -75,17 +73,50 @@ const home = () => {
 			<Trending coins={[...coins]} />
 			<div className={`${body}`}>
 				<div className={`${coinListHeader}`}>
-					<button className={`${coinHeaderTitle}`}>
+					<div className={`${coinHeaderTitle}`}>
 						<div>
 							<i className='fa-regular fa-star'></i>#
 						</div>
 						<div>Name</div>
+					</div>
+					<div>Price</div>
+					<button onClick={() => handleSort('1hr', sortParam, setSortParam)}>
+						<i
+							className={
+								sortParam.type === '1hr'
+									? sortParam.direction === 'desc'
+										? 'fa-solid fa-circle-chevron-down'
+										: 'fa-solid fa-circle-chevron-up'
+									: 'hidden'
+							}
+						></i>
+						1h %
 					</button>
-					<button>Price</button>
-					<button>1h %</button>
-					<button>24h %</button>
-					<button>7d %</button>
-					<button onClick={() => handleSort('mcap')}>
+					<button onClick={() => handleSort('24hr', sortParam, setSortParam)}>
+						<i
+							className={
+								sortParam.type === '24hr'
+									? sortParam.direction === 'desc'
+										? 'fa-solid fa-circle-chevron-down'
+										: 'fa-solid fa-circle-chevron-up'
+									: 'hidden'
+							}
+						></i>
+						24h %
+					</button>
+					<button onClick={() => handleSort('7d', sortParam, setSortParam)}>
+						<i
+							className={
+								sortParam.type === '7d'
+									? sortParam.direction === 'desc'
+										? 'fa-solid fa-circle-chevron-down'
+										: 'fa-solid fa-circle-chevron-up'
+									: 'hidden'
+							}
+						></i>
+						7d %
+					</button>
+					<button onClick={() => handleSort('mcap', sortParam, setSortParam)}>
 						<i
 							className={
 								sortParam.type === 'mcap'
@@ -97,7 +128,18 @@ const home = () => {
 						></i>
 						Market Cap
 					</button>
-					<button>Volume(24h)</button>
+					<button onClick={() => handleSort('volume', sortParam, setSortParam)}>
+						<i
+							className={
+								sortParam.type === 'volume'
+									? sortParam.direction === 'desc'
+										? 'fa-solid fa-circle-chevron-down'
+										: 'fa-solid fa-circle-chevron-up'
+									: 'hidden'
+							}
+						></i>
+						Volume(24h)
+					</button>
 				</div>
 				<div className={`${coinItems}`}>
 					{displayCoins!.map((coin: coin) => {
