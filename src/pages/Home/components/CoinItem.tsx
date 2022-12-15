@@ -16,9 +16,6 @@ const classNamer = (num: number) => {
 };
 
 const CoinItem = ({ coin }: CoinItemProps) => {
-	{
-		console.log('coin', coin);
-	}
 	return (
 		<div className={`${coinItem}`} key={coin.id}>
 			<div className={`${coinItemTitle}`}>
@@ -40,12 +37,13 @@ const CoinItem = ({ coin }: CoinItemProps) => {
 				{numberParse(
 					coin.market_data.price_change_percentage_1h_in_currency.usd
 				)}
+				%
 			</div>
 			<div className={classNamer(coin.market_data.price_change_percentage_24h)}>
-				{numberParse(coin.market_data.price_change_percentage_24h)}
+				{numberParse(coin.market_data.price_change_percentage_24h)}%
 			</div>
 			<div className={classNamer(coin.market_data.price_change_percentage_7d)}>
-				{numberParse(coin.market_data.price_change_percentage_7d)}
+				{numberParse(coin.market_data.price_change_percentage_7d)}%
 			</div>
 			<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
 			<div>{moneyParse(coin.market_data.total_volume.usd)}</div>

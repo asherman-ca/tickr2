@@ -23,15 +23,15 @@ export const displayCoinsMemo = (
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
 					return (
-						a.market_data.price_change_percentage_7d -
-						b.market_data.price_change_percentage_7d
+						b.market_data.price_change_percentage_7d -
+						a.market_data.price_change_percentage_7d
 					);
 				});
 			} else {
 				return coins.sort((a, b) => {
 					return (
-						b.market_data.price_change_percentage_7d -
-						a.market_data.price_change_percentage_7d
+						a.market_data.price_change_percentage_7d -
+						b.market_data.price_change_percentage_7d
 					);
 				});
 			}
@@ -39,15 +39,15 @@ export const displayCoinsMemo = (
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
 					return (
-						a.market_data.price_change_percentage_24h -
-						b.market_data.price_change_percentage_24h
+						b.market_data.price_change_percentage_24h -
+						a.market_data.price_change_percentage_24h
 					);
 				});
 			} else {
 				return coins.sort((a, b) => {
 					return (
-						b.market_data.price_change_percentage_24h -
-						a.market_data.price_change_percentage_24h
+						a.market_data.price_change_percentage_24h -
+						b.market_data.price_change_percentage_24h
 					);
 				});
 			}
@@ -55,15 +55,15 @@ export const displayCoinsMemo = (
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
 					return (
-						a.market_data.price_change_percentage_1h_in_currency.usd -
-						b.market_data.price_change_percentage_1h_in_currency.usd
+						b.market_data.price_change_percentage_1h_in_currency.usd -
+						a.market_data.price_change_percentage_1h_in_currency.usd
 					);
 				});
 			} else {
 				return coins.sort((a, b) => {
 					return (
-						b.market_data.price_change_percentage_1h_in_currency.usd -
-						a.market_data.price_change_percentage_1h_in_currency.usd
+						a.market_data.price_change_percentage_1h_in_currency.usd -
+						b.market_data.price_change_percentage_1h_in_currency.usd
 					);
 				});
 			}
@@ -71,13 +71,13 @@ export const displayCoinsMemo = (
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
 					return (
-						a.market_data.total_volume.usd - b.market_data.total_volume.usd
+						b.market_data.total_volume.usd - a.market_data.total_volume.usd
 					);
 				});
 			} else {
 				return coins.sort((a, b) => {
 					return (
-						b.market_data.total_volume.usd - a.market_data.total_volume.usd
+						a.market_data.total_volume.usd - b.market_data.total_volume.usd
 					);
 				});
 			}
