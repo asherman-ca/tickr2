@@ -1,0 +1,26 @@
+.pagination {
+	padding: 1rem 0.5rem 0rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.showRows {
+	display: flex;
+	align-items: center;
+}
+
+.showRows > div {
+	margin-right: 0.5rem;
+
+	color: var(--grey-text);
+}
+
+.showRows select {
+	padding: 0.5rem;
+
+	background: rgb(239, 242, 245);
+	border-color: white;
+	border-radius: 25%;
+}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../Home.module.css';
 import CoinItem from './CoinItem';
+import Pagination from '../../../components/Pagination';
 const { coinHeaderTitle, coinItems, coinListHeader } = styles;
 import { displayCoinsMemo, handleSort } from '../HomeActions';
 import { coin } from '../../../utils/types';
@@ -22,6 +23,28 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 	});
 	const displayCoins = displayCoinsMemo(coins, loading, sortParam);
 	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
+	const [currentPage, setCurrentPage] = useState<number>(1);
+
+	const updateRowsPerPage = (rowsNumber: number) => {
+		setRowsPerPage(rowsNumber);
+		setCurrentPage(1);
+	};
+
+	const nextPage = () => {
+		setCurrentPage((prev) => prev + 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
+	const prevPage = () => {
+		setCurrentPage((prev) => prev - 1);
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
 
 	return (
 		<div>
@@ -95,10 +118,22 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 				</button>
 			</div>
 			<div className={`${coinItems}`}>
-				{displayCoins!.slice(0, 20).map((coin: coin) => {
-					return <CoinItem key={coin.id} coin={coin} />;
-				})}
+				{displayCoins!
+					.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
+					.map((coin: coin) => {
+						return <CoinItem key={coin.id} coin={coin} />;
+					})}
 			</div>
+			<Pagination
+				rowsPerPage={rowsPerPage}
+				setRowsPerPage={updateRowsPerPage}
+				rowsPerPageOptions={rowsPerPageOptions}
+				totalCount={coins.length}
+				setCurrentPage={setCurrentPage}
+				currentPage={currentPage}
+				nextPage={nextPage}
+				prevPage={prevPage}
+			/>
 		</div>
 	);
 };
