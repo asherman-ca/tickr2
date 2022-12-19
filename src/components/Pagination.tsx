@@ -1,7 +1,7 @@
 import React from 'react';
 import { paginationRange } from './PaginationRange';
 import styles from './Pagination.module.css';
-const { pagination, showRows } = styles;
+const { pagination, showRows, pages } = styles;
 
 type PaginationProps = {
 	setRowsPerPage: any;
@@ -52,7 +52,7 @@ const Pagination = ({
 			>
 				<i className='fa-solid fa-chevron-up'></i>
 			</button>
-			<div>
+			<div className={`${pages}`}>
 				<button
 					disabled={currentPage === 1}
 					className={
@@ -67,7 +67,7 @@ const Pagination = ({
 					<i className='fa-solid fa-chevron-left'></i>
 				</button>
 
-				{paginationPages.map((pageNumber, ind) => {
+				{paginationPages.map((pageNumber: number | string, ind: number) => {
 					if (pageNumber === '...') {
 						return (
 							<div key={ind} className='dots'>

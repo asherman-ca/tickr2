@@ -1,6 +1,6 @@
 const DOTS = '...';
 
-const paginationRange = (currentPage, lastPage) => {
+const paginationRange = (currentPage: number, lastPage: number) => {
 	// returns a list of clickable page buttons that's configured by total pages and current pagination position
 	if (lastPage <= 3) {
 		let pageNumbers = [];

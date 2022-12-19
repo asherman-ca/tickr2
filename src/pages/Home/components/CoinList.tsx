@@ -22,7 +22,7 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 		direction: 'desc',
 	});
 	const displayCoins = displayCoinsMemo(coins, loading, sortParam);
-	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
+	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[3]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 
 	const updateRowsPerPage = (rowsNumber: number) => {
@@ -118,6 +118,14 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 				</button>
 			</div>
 			<div className={`${coinItems}`}>
+				{console.log('coins', coins)}
+				{console.log(
+					'dispcoins',
+					displayCoins!.slice(
+						(currentPage - 1) * rowsPerPage,
+						currentPage * rowsPerPage
+					)
+				)}
 				{displayCoins!
 					.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
 					.map((coin: coin) => {

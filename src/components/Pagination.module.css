@@ -24,3 +24,8 @@
 	border-color: white;
 	border-radius: 25%;
 }
+
+.pages {
+	display: flex;
+	gap: 1rem;
+}
