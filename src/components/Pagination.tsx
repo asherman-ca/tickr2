@@ -1,7 +1,15 @@
 import React from 'react';
 import { paginationRange } from './PaginationRange';
 import styles from './Pagination.module.css';
-const { pagination, showRows, pages, pageButton, active, dots } = styles;
+const {
+	pagination,
+	showRows,
+	pages,
+	pageButton,
+	active,
+	dots,
+	pageScrollButton,
+} = styles;
 
 type PaginationProps = {
 	setRowsPerPage: any;
@@ -41,24 +49,26 @@ const Pagination = ({
 
 	return (
 		<div className={`${pagination}`}>
-			<button
-				className='top-button'
-				onClick={() => {
-					window.scrollTo({
-						top: 0,
-						behavior: 'smooth',
-					});
-				}}
-			>
-				<i className='fa-solid fa-chevron-up'></i>
-			</button>
+			<div>
+				<button
+					className='top-button'
+					onClick={() => {
+						window.scrollTo({
+							top: 0,
+							behavior: 'smooth',
+						});
+					}}
+				>
+					<i className='fa-solid fa-chevron-up'></i>
+				</button>
+			</div>
 			<div className={`${pages}`}>
 				<button
 					disabled={currentPage === 1}
 					className={
 						currentPage !== 1
-							? 'page-scroll-button'
-							: 'page-scroll-button inactive'
+							? `${pageScrollButton}`
+							: `${pageScrollButton} inactive`
 					}
 					onClick={() => {
 						prevPage();
@@ -103,8 +113,8 @@ const Pagination = ({
 					disabled={currentPage === lastPage}
 					className={
 						currentPage !== lastPage
-							? 'page-scroll-button'
-							: 'page-scroll-button inactive'
+							? `${pageScrollButton}`
+							: `${pageScrollButton} inactive`
 					}
 					onClick={() => nextPage()}
 				>
