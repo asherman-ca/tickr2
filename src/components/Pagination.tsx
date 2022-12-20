@@ -1,7 +1,7 @@
 import React from 'react';
 import { paginationRange } from './PaginationRange';
 import styles from './Pagination.module.css';
-const { pagination, showRows, pages } = styles;
+const { pagination, showRows, pages, pageButton, active, dots } = styles;
 
 type PaginationProps = {
 	setRowsPerPage: any;
@@ -70,21 +70,21 @@ const Pagination = ({
 				{paginationPages.map((pageNumber: number | string, ind: number) => {
 					if (pageNumber === '...') {
 						return (
-							<div key={ind} className='dots'>
-								...
+							<div key={ind} className={`${dots}`}>
+								<i className='fa-solid fa-ellipsis'></i>
 							</div>
 						);
 					} else if (pageNumber === currentPage) {
 						return (
-							<div key={ind} className='page-button active'>
+							<button key={ind} className={`${pageButton} ${active}`}>
 								{pageNumber}
-							</div>
+							</button>
 						);
 					} else {
 						return (
-							<div
+							<button
 								key={ind}
-								className='page-button'
+								className={`${pageButton}`}
 								onClick={() => {
 									setCurrentPage(pageNumber);
 									window.scrollTo({
@@ -94,7 +94,7 @@ const Pagination = ({
 								}}
 							>
 								{pageNumber}
-							</div>
+							</button>
 						);
 					}
 				})}

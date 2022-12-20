@@ -27,5 +27,30 @@
 
 .pages {
 	display: flex;
-	gap: 1rem;
+	gap: 0.25rem;
+}
+
+.pageButton {
+	padding: 0.5rem;
+
+	border-radius: 25%;
+}
+
+.pageButton:hover {
+	background: var(--grey-hover);
+}
+
+.active {
+	/* font-weight: bold; */
+	background: blue;
+	color: white;
+}
+
+.active:hover {
+	background: blue;
+}
+
+.dots {
+	display: flex;
+	align-items: center;
 }
