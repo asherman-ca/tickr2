@@ -24,3 +24,20 @@ export const numberParse = (num: number) => {
 		return 0;
 	}
 };
+
+export const numParse2 = (num: number) => {
+	const f = Intl.NumberFormat('en-us');
+	return f.format(num);
+};
+
+export const moneyParse2 = (num: number) => {
+	const f = Intl.NumberFormat('en-us', {
+		currency: 'USD',
+		style: 'currency',
+	});
+
+	// use cntrl + space to reveal config option inside the brackets
+	const f2 = Intl.NumberFormat(undefined, {
+		notation: 'compact',
+	});
+};

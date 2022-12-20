@@ -14,6 +14,14 @@
 	flex: 1;
 }
 
+.nav .col:nth-child(2n) {
+	justify-content: center;
+}
+
+.nav .col:last-child {
+	justify-content: flex-end;
+}
+
 .brand {
 	font-size: 2rem;
 	font-weight: 700;
