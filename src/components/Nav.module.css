@@ -1,4 +1,5 @@
 .nav {
+	position: relative;
 	padding: 1rem 3rem;
 
 	display: flex;
@@ -33,12 +34,7 @@
 
 	font-size: 1.75rem;
 	color: var(--clr-blue);
-	/* transition: transform 0.65s cubic-bezier(0.8, -0.8, 0.2, 1.8) 0s; */
 }
-
-/* .brand i:hover {
-	transform: rotate(360deg);
-} */
 
 .spins i {
 	transition: transform 0.65s cubic-bezier(0.8, -0.8, 0.2, 1.8) 0s;
@@ -47,3 +43,5 @@
 .spins:hover i {
 	transform: rotate(360deg);
 }
+
+/* nav menu */

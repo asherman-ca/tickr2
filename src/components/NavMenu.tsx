@@ -5,7 +5,8 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { UserAuth } from '../context/AuthContext';
 import styles from './Nav.module.css';
-const { navLink } = styles;
+// const { navLinks, navItem, navLink, navLinkButton, navLinkDropdown, showDrop } =
+// 	styles;
 
 const NavMenu = () => {
 	const navigate = useNavigate();
@@ -17,14 +18,252 @@ const NavMenu = () => {
 		toast.info('Logged Out');
 	};
 
-	let authButton;
-	if (user) {
-		authButton = <div onClick={onLogout}>logged in</div>;
-	} else {
-		authButton = <div onClick={() => navigate('/signin')}>logged out</div>;
-	}
+	const onDemo = async () => {
+		try {
+			const auth = getAuth();
 
-	return <div>{authButton}</div>;
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				'asd@asd.com',
+				'asdasd'
+			);
+
+			if (userCredential.user) {
+				// navigate('/profile');
+				toast.success('Logged in');
+			}
+		} catch (error) {
+			toast.error('Invalid credentials');
+		}
+	};
+
+	let authButton;
+	if (!user) {
+		authButton = (
+			<div className='nav-link'>
+				<button
+					className={
+						showDrop
+							? 'nav-link-button show-drop-button active'
+							: 'nav-link-button'
+					}
+					type='button'
+					onClick={() => setShowDrop((prev) => !prev)}
+					onBlur={() => setShowDrop(false)}
+				>
+					<i></i>
+				</button>
+				<div
+					className={
+						showDrop ? 'nav-link-dropdown show-drop' : 'nav-link-dropdown'
+					}
+				>
+					<div onClick={() => navigate('/')}>
+						<i className='fa-solid fa-coins'></i>Tickrs
+					</div>
+					<div onClick={() => navigate('/exchanges')}>
+						<i className='fa-solid fa-store'></i>Exchanges
+					</div>
+					<div
+						style={{
+							height: '0px',
+							padding: '0',
+							margin: '.5rem 0',
+							borderBottom: '.5px solid grey',
+						}}
+					></div>
+					<Link to={'/signin'}>
+						<i className='fa-solid fa-address-card'></i>Login
+					</Link>
+					<Link to={'/signup'}>
+						<i className='fa-solid fa-user-plus'></i>Register
+					</Link>
+					<div
+						style={{
+							height: '0px',
+							padding: '0',
+							margin: '.5rem 0',
+							borderBottom: '.5px solid grey',
+						}}
+					></div>
+					<div onClick={onDemo}>
+						<i className='fa-solid fa-flask'></i>Guest
+					</div>
+				</div>
+			</div>
+		);
+	} else {
+		authButton = (
+			<>
+				<div className='nav-link'>
+					<button
+						className={
+							showDrop
+								? 'nav-link-button show-drop-button active'
+								: 'nav-link-button'
+						}
+						type='button'
+						onClick={() => setShowDrop((prev) => !prev)}
+						onBlur={() => setShowDrop(false)}
+					>
+						{/* <i className='fa-solid fa-bars'></i> */}
+						<i></i>
+					</button>
+					<div
+						className={
+							showDrop ? 'nav-link-dropdown show-drop' : 'nav-link-dropdown'
+						}
+					>
+						<div onClick={() => navigate('/')}>
+							<i className='fa-solid fa-coins'></i>Tickrs
+						</div>
+						<div onClick={() => navigate('/exchanges')}>
+							<i className='fa-solid fa-store'></i>Exchanges
+						</div>
+						<div
+							style={{
+								height: '0px',
+								padding: '0',
+								margin: '.5rem 0',
+								borderBottom: '.5px solid grey',
+							}}
+						></div>
+						<div onClick={() => navigate('/account')}>
+							<i className='fa-solid fa-flask'></i>Testnet
+						</div>
+						<div onClick={() => navigate('/profile')}>
+							<i className='fa-solid fa-user-astronaut'></i>Account
+						</div>
+						<div
+							style={{
+								height: '0px',
+								padding: '0',
+								margin: '.5rem 0',
+								borderBottom: '.5px solid grey',
+							}}
+						></div>
+						<div onClick={onLogout}>
+							<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
+						</div>
+					</div>
+				</div>
+			</>
+		);
+	}
+	// if (!user) {
+	// 	authButton = (
+	// 		<div className={`${navLink}`}>
+	// 			<button
+	// 				className={
+	// 					showDrop
+	// 						? `${navLinkButton} show-drop-button active`
+	// 						: `${navLinkButton}`
+	// 				}
+	// 				type='button'
+	// 				onClick={() => setShowDrop((prev) => !prev)}
+	// 				onBlur={() => setShowDrop(false)}
+	// 			>
+	// 				<i></i>
+	// 			</button>
+	// 			<div
+	// 				className={
+	// 					showDrop ? `${navLinkDropdown} ${showDrop}` : `${navLinkDropdown}`
+	// 				}
+	// 			>
+	// 				<div onClick={() => navigate('/')}>
+	// 					<i className='fa-solid fa-coins'></i>Tickrs
+	// 				</div>
+	// 				<div onClick={() => navigate('/exchanges')}>
+	// 					<i className='fa-solid fa-store'></i>Exchanges
+	// 				</div>
+	// 				<div
+	// 					style={{
+	// 						height: '0px',
+	// 						padding: '0',
+	// 						margin: '.5rem 0',
+	// 						borderBottom: '.5px solid grey',
+	// 					}}
+	// 				></div>
+	// 				<Link to={'/signin'}>
+	// 					<i className='fa-solid fa-address-card'></i>Login
+	// 				</Link>
+	// 				<Link to={'/signup'}>
+	// 					<i className='fa-solid fa-user-plus'></i>Register
+	// 				</Link>
+	// 				<div
+	// 					style={{
+	// 						height: '0px',
+	// 						padding: '0',
+	// 						margin: '.5rem 0',
+	// 						borderBottom: '.5px solid grey',
+	// 					}}
+	// 				></div>
+	// 				<div onClick={onDemo}>
+	// 					<i className='fa-solid fa-flask'></i>Guest
+	// 				</div>
+	// 			</div>
+	// 		</div>
+	// 	);
+	// } else {
+	// 	authButton = (
+	// 		<>
+	// 			<div className='nav-link'>
+	// 				<button
+	// 					className={
+	// 						showDrop
+	// 							? `${navLinkButton} show-drop-button active`
+	// 							: `${navLinkButton}`
+	// 					}
+	// 					type='button'
+	// 					onClick={() => setShowDrop((prev) => !prev)}
+	// 					onBlur={() => setShowDrop(false)}
+	// 				>
+	// 					{/* <i className='fa-solid fa-bars'></i> */}
+	// 					<i></i>
+	// 				</button>
+	// 				<div
+	// 					className={
+	// 						showDrop ? `${navLinkDropdown} ${showDrop}` : `${navLinkDropdown}`
+	// 					}
+	// 				>
+	// 					<div onClick={() => navigate('/')}>
+	// 						<i className='fa-solid fa-coins'></i>Tickrs
+	// 					</div>
+	// 					<div onClick={() => navigate('/exchanges')}>
+	// 						<i className='fa-solid fa-store'></i>Exchanges
+	// 					</div>
+	// 					<div
+	// 						style={{
+	// 							height: '0px',
+	// 							padding: '0',
+	// 							margin: '.5rem 0',
+	// 							borderBottom: '.5px solid grey',
+	// 						}}
+	// 					></div>
+	// 					<div onClick={() => navigate('/account')}>
+	// 						<i className='fa-solid fa-flask'></i>Testnet
+	// 					</div>
+	// 					<div onClick={() => navigate('/profile')}>
+	// 						<i className='fa-solid fa-user-astronaut'></i>Account
+	// 					</div>
+	// 					<div
+	// 						style={{
+	// 							height: '0px',
+	// 							padding: '0',
+	// 							margin: '.5rem 0',
+	// 							borderBottom: '.5px solid grey',
+	// 						}}
+	// 					></div>
+	// 					<div onClick={onLogout}>
+	// 						<i className='fa-solid fa-arrow-right-from-bracket'></i>Logout
+	// 					</div>
+	// 				</div>
+	// 			</div>
+	// 		</>
+	// 	);
+	// }
+
+	return <div className='nav-item nav-links'>{authButton}</div>;
 };
 
 export default NavMenu;
