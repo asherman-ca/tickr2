@@ -23,12 +23,20 @@ import {
 	getDoc,
 } from 'firebase/firestore';
 
-const UserContext = createContext();
+interface AppContextInterface {
+	createUser: any;
+	user: any;
+	logout: any;
+	signIn: any;
+	oAuth: any;
+}
 
-export const AuthContextProvider = ({ children }) => {
+const UserContext = createContext<AppContextInterface | null>(null);
+
+export const AuthContextProvider = ({ children }: any) => {
 	const [user, setUser] = useState({});
 
-	const createUser = async (navigate, formData) => {
+	const createUser = async (navigate: any, formData: any) => {
 		console.log('formData', formData);
 		const existingUserRef = collection(db, 'users');
 		const q = query(
@@ -46,7 +54,7 @@ export const AuthContextProvider = ({ children }) => {
 				);
 				const user = userCredential.user;
 
-				updateProfile(auth.currentUser, {
+				updateProfile(auth.currentUser as any, {
 					displayName: formData.name,
 				});
 
@@ -67,7 +75,7 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
-	const signIn = async (navigate, formData) => {
+	const signIn = async (navigate: any, formData: any) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(
 				auth,
@@ -83,7 +91,7 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
-	const oAuth = async (navigate) => {
+	const oAuth = async (navigate: any) => {
 		try {
 			// const auth = getAuth();
 			const provider = new GoogleAuthProvider();
@@ -116,7 +124,7 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+		const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
 			console.log(currentUser);
 			setUser(currentUser);
 		});
@@ -133,5 +141,5 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 export const UserAuth = () => {
-	return useContext(UserContext);
+	return useContext(UserContext) as AppContextInterface;
 };
