@@ -29,19 +29,19 @@ const SignUp = () => {
 		balance: 0,
 		testBalance: 100000,
 		lastFaucet: {},
-	});
+	} as any);
 	const [errors, setErrors] = useState({
 		email: '',
 		name: '',
 		password: '',
 		confirmPassword: '',
 	});
-	const validators = SignUpValidators(formData);
+	const validators = SignUpValidators(formData) as any;
 
-	const onSubmit = async (e) => {
+	const onSubmit = async (e: any) => {
 		let errorFound = false;
 		e.preventDefault();
-		const errorsCopy = {};
+		const errorsCopy = {} as any;
 		Object.keys(validators).forEach((key) => {
 			if (!validators[key].action(formData[key])) {
 				errorsCopy[key] = validators[key].message;
@@ -60,8 +60,8 @@ const SignUp = () => {
 		}
 	};
 
-	const onChange = (e) => {
-		setFormData((prev) => {
+	const onChange = (e: any) => {
+		setFormData((prev: any) => {
 			return {
 				...prev,
 				[e.target.id]: e.target.value,
@@ -84,7 +84,7 @@ const SignUp = () => {
 							id='email'
 							type='email'
 							placeholder='Email'
-							className={errors.email ? 'invalid' : ''}
+							className={errors.email ? `${invalid}` : ''}
 						/>
 						{errors.email && (
 							<div className={`${formError}`}>{errors.email}</div>
@@ -96,7 +96,7 @@ const SignUp = () => {
 							type='text'
 							placeholder='Name'
 							onChange={onChange}
-							className={errors.name ? 'invalid' : ''}
+							className={errors.name ? `${invalid}` : ''}
 						/>
 						{errors.name && <div className={`${formError}`}>{errors.name}</div>}
 					</div>
@@ -106,7 +106,7 @@ const SignUp = () => {
 							type='password'
 							placeholder='Password'
 							onChange={onChange}
-							className={errors.password ? 'invalid' : ''}
+							className={errors.password ? `${invalid}` : ''}
 						/>
 						{errors.password && (
 							<div className={`${formError}`}>{errors.password}</div>
@@ -118,7 +118,7 @@ const SignUp = () => {
 							type='password'
 							placeholder='Confirm Password'
 							onChange={onChange}
-							className={errors.confirmPassword ? 'invalid' : ''}
+							className={errors.confirmPassword ? `${invalid}` : ''}
 						/>
 						{errors.confirmPassword && (
 							<div className={`${formError}`}>{errors.confirmPassword}</div>

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import OAuth from '../../components/OAuth';
 import { UserAuth } from '../../context/AuthContext';
-import { SignInValidators as validators } from '../../utils/validation';
+import { SignInValidators as validatorsImport } from '../../utils/validation';
 import styles from './Auth.module.css';
 const {
 	auth,
@@ -23,17 +23,18 @@ const SignIn = () => {
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
-	});
+	} as any);
 	const [errors, setErrors] = useState({
 		email: '',
 		password: '',
 	});
 
-	const onSubmit = async (e) => {
+	const onSubmit = async (e: any) => {
 		e.preventDefault();
 
+		const validators = validatorsImport as any;
 		let errorFound = false;
-		const errorsCopy = {};
+		const errorsCopy = {} as any;
 		Object.keys(validators).forEach((key) => {
 			if (!validators[key].action(formData[key])) {
 				errorsCopy[key] = validators[key].message;
@@ -52,8 +53,8 @@ const SignIn = () => {
 		}
 	};
 
-	const onChange = (e) => {
-		setFormData((prev) => {
+	const onChange = (e: any) => {
+		setFormData((prev: any) => {
 			return {
 				...prev,
 				[e.target.id]: e.target.value,
