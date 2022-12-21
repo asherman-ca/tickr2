@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 import { UserAuth } from '../context/AuthContext';
+import styles from '../pages/Auth/Auth.module.css';
+const { oauthLogo } = styles;
 
 function OAuth() {
 	const navigate = useNavigate();
@@ -12,7 +14,7 @@ function OAuth() {
 
 	return (
 		<div onClick={onGoogleClick} className='oauth'>
-			<img className='oauth-logo' src='../google.png' alt='' />
+			<img className={`${oauthLogo}`} src='../google.png' alt='' />
 		</div>
 	);
 }

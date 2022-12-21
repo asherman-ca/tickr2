@@ -25,8 +25,8 @@ function App() {
 						<Route path='/exchanges' element={<h1>exchange list</h1>} />
 						{/* TODO: protected */}
 						<Route element={<Account />}>
-							<Route path='profile' element={<h1>profile</h1>} />
-							<Route path='exchange' element={<h1>exchange</h1>} />
+							<Route path='/profile' element={<h1>profile</h1>} />
+							<Route path='/exchange' element={<h1>exchange</h1>} />
 						</Route>
 						<Route path='*' element={<Navigate to='/' />} />
 					</Routes>
