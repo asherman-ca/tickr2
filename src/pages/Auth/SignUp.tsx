@@ -71,12 +71,14 @@ const SignUp = () => {
 
 	return (
 		<div className='container'>
-			<div className='auth'>
+			<div className={`${auth}`}>
 				<OAuth />
-				<div className='header'>Sign Up</div>
-				<div>to continue to Tickr</div>
-				<form className='auth-form'>
-					<div className='input-container'>
+				<div className={`${header}`}>
+					<div>Sign Up</div>
+					<div>to continue to Tickr</div>
+				</div>
+				<form className={`${authForm}`}>
+					<div className={`${inputContainer}`}>
 						<input
 							onChange={onChange}
 							id='email'
@@ -84,9 +86,11 @@ const SignUp = () => {
 							placeholder='Email'
 							className={errors.email ? 'invalid' : ''}
 						/>
-						{errors.email && <div className='form-error'>{errors.email}</div>}
+						{errors.email && (
+							<div className={`${formError}`}>{errors.email}</div>
+						)}
 					</div>
-					<div className='input-container'>
+					<div className={`${inputContainer}`}>
 						<input
 							id='name'
 							type='text'
@@ -94,9 +98,9 @@ const SignUp = () => {
 							onChange={onChange}
 							className={errors.name ? 'invalid' : ''}
 						/>
-						{errors.name && <div className='form-error'>{errors.name}</div>}
+						{errors.name && <div className={`${formError}`}>{errors.name}</div>}
 					</div>
-					<div className='input-container'>
+					<div className={`${inputContainer}`}>
 						<input
 							id='password'
 							type='password'
@@ -105,10 +109,10 @@ const SignUp = () => {
 							className={errors.password ? 'invalid' : ''}
 						/>
 						{errors.password && (
-							<div className='form-error'>{errors.password}</div>
+							<div className={`${formError}`}>{errors.password}</div>
 						)}
 					</div>
-					<div className='input-container'>
+					<div className={`${inputContainer}`}>
 						<input
 							id='confirmPassword'
 							type='password'
@@ -117,12 +121,14 @@ const SignUp = () => {
 							className={errors.confirmPassword ? 'invalid' : ''}
 						/>
 						{errors.confirmPassword && (
-							<div className='form-error'>{errors.confirmPassword}</div>
+							<div className={`${formError}`}>{errors.confirmPassword}</div>
 						)}
 					</div>
-					<div className='button-row'>
+					<div className={`${buttonRow}`}>
 						<Link to={'/signin'}>Already registered?</Link>
-						<button onClick={onSubmit}>Submit</button>
+						<button onClick={onSubmit} className='blue-button'>
+							Submit
+						</button>
 					</div>
 				</form>
 			</div>
