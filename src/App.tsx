@@ -24,7 +24,7 @@ function App() {
 						<Route path='/coins/:coinId' element={<h1>coin view</h1>} />
 						<Route path='/exchanges' element={<h1>exchange list</h1>} />
 						{/* TODO: protected */}
-						<Route path='/account' element={<Account />}>
+						<Route element={<Account />}>
 							<Route path='profile' element={<h1>profile</h1>} />
 							<Route path='exchange' element={<h1>exchange</h1>} />
 						</Route>

@@ -113,7 +113,7 @@ export const AuthContextProvider = ({ children }: any) => {
 					lastFaucet: '',
 				});
 			}
-			navigate('/account');
+			navigate('/profile');
 		} catch (error) {
 			toast.error('Could not authorize with Google');
 		}
