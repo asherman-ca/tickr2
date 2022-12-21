@@ -1,11 +1,16 @@
 import { Outlet } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
-	{
-		console.log('hits protected route');
+	const { user } = UserAuth();
+	const navigate = useNavigate();
+
+	if (!user) {
+		navigate('/');
+	} else {
+		return <Outlet />;
 	}
-	// protected logic here
-	return <Outlet />;
 };
 
 export default Account;

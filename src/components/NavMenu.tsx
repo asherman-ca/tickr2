@@ -19,9 +19,9 @@ const NavMenu = () => {
 
 	let authButton;
 	if (user) {
-		authButton = <div>logged in</div>;
+		authButton = <div onClick={onLogout}>logged in</div>;
 	} else {
-		authButton = <div>logged out</div>;
+		authButton = <div onClick={() => navigate('/signin')}>logged out</div>;
 	}
 
 	return <div>{authButton}</div>;
