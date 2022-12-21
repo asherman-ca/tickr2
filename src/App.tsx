@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import Account from './components/Account';
 import Nav from './components/Nav';
 import SignIn from './pages/Auth/SignIn';
+import SignUp from './pages/Auth/SignUp';
 import './App.css';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
 					<Nav />
 					<Routes>
 						<Route path='/' element={<Home />} />
-						<Route path='/signup' element={<h1>sign up</h1>} />
+						<Route path='/signup' element={<SignUp />} />
 						<Route path='/signin' element={<SignIn />} />
 						<Route path='/password-reset' element={<h1>password reset</h1>} />
 						<Route path='/coins/:coinId' element={<h1>coin view</h1>} />

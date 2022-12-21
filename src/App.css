@@ -64,6 +64,8 @@ select {
 	--clr-blk-button: rgba(4, 17, 29, 0.75);
 
 	--shadow-smallest: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	--shadow-md: rgba(88, 102, 126, 0.08) 0px 4px 24px,
+		rgba(88, 102, 126, 0.12) 0px 1px 2px;
 
 	--clr-buy: #44af69;
 	--clr-sell: #f8333c;
@@ -128,6 +130,14 @@ button {
 	border: none;
 	background: none;
 	cursor: pointer;
+}
+
+.blue-button {
+	padding: 1rem;
+
+	background: var(--clr-blue);
+	color: white;
+	border-radius: 0.25rem;
 }
 
 .hidden {

@@ -103,7 +103,9 @@ const SignIn = () => {
 
 					<div className={`${buttonRow}`}>
 						<Link to={'/signup'}>Create account</Link>
-						<button onClick={onSubmit}>Submit</button>
+						<button onClick={onSubmit} className='blue-button'>
+							Submit
+						</button>
 					</div>
 				</form>
 			</div>
