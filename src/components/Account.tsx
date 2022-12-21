@@ -1,13 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
 	const { user } = UserAuth();
-	const navigate = useNavigate();
 
 	if (!user) {
-		navigate('/');
+		return <Navigate to={'/'} />;
 	} else {
 		return <Outlet />;
 	}
