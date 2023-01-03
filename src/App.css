@@ -340,7 +340,7 @@ button {
 	visibility: hidden;
 	position: absolute;
 	top: 100%;
-	right: 0;
+	right: 3rem;
 	padding: 0 0.5rem;
 	z-index: 10;
 	overflow-y: hidden;
