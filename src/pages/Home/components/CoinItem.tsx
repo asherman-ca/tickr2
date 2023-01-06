@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { coin } from '../../../utils/types';
 import { moneyParse, numberParse } from '../../../utils/numbers';
 import styles from '../Home.module.css';
@@ -17,7 +19,7 @@ const classNamer = (num: number) => {
 
 const CoinItem = ({ coin }: CoinItemProps) => {
 	return (
-		<div className={`${coinItem}`} key={coin.id}>
+		<Link to={`/coins/${coin.id}`} className={`${coinItem}`} key={coin.id}>
 			<div className={`${coinItemTitle}`}>
 				<div>
 					<i className='fa-regular fa-star'></i>
@@ -47,7 +49,7 @@ const CoinItem = ({ coin }: CoinItemProps) => {
 			</div>
 			<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
 			<div>{moneyParse(coin.market_data.total_volume.usd)}</div>
-		</div>
+		</Link>
 	);
 };
 

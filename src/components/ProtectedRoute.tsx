@@ -2,7 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Account = () => {
+const ProtectedRoute = () => {
 	const { user } = UserAuth();
 
 	if (!user) {
@@ -12,4 +12,4 @@ const Account = () => {
 	}
 };
 
-export default Account;
+export default ProtectedRoute;

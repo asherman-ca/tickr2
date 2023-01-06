@@ -1,0 +1,30 @@
+.coinView {
+	padding: 2rem 3rem;
+}
+
+.coinHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.coinSurHeader {
+	display: flex;
+	flex-direction: row;
+}
+
+.coinSurHeader > div {
+	flex-basis: 100%;
+
+	display: flex;
+	justify-content: flex-end;
+}
+
+.coinSurHeader > div:first-child {
+	justify-content: flex-start;
+}
+
+.coinSubHeader {
+	display: flex;
+	justify-content: space-between;
+}
