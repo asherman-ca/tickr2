@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { filterSearchParam } from './NavActions';
@@ -7,26 +7,28 @@ import { CoinsData } from '../context/CoinContext';
 import styles from './Nav.module.css';
 const { nav, col, brand, spins } = styles;
 
+import { coin } from '../utils/types';
+
 const Nav = () => {
 	const navigate = useNavigate();
 	const { coins, loading } = CoinsData();
 	const [param, setParam] = useState('');
 	const [searchFilter, setSearchFilter] = useState([]);
 
-	const onSubmit = (e) => {
+	const onSubmit = (e: any) => {
 		e.preventDefault();
 		navigate(`/coins/${param.toLowerCase()}`);
 		setParam('');
 		setSearchFilter([]);
 	};
 
-	const onChange = (e) => {
+	const onChange = (e: any) => {
 		e.preventDefault();
 		setParam(e.target.value);
-		setSearchFilter(filterSearchParam(coins, e.target.value));
+		setSearchFilter(filterSearchParam(coins, e.target.value) as any);
 	};
 
-	const onSuggestedClick = (suggestedId) => {
+	const onSuggestedClick = (suggestedId: string) => {
 		navigate(`/coins/${suggestedId.toLowerCase()}`);
 		setParam('');
 		setSearchFilter([]);
@@ -51,7 +53,7 @@ const Nav = () => {
 				/>
 				{searchFilter.length > 0 && (
 					<div className='search-prefill'>
-						{searchFilter.map((coin) => (
+						{searchFilter.map((coin: coin) => (
 							<div
 								className='prefill-item'
 								onClick={() => onSuggestedClick(coin.id)}
