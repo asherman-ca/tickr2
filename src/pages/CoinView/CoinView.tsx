@@ -25,7 +25,7 @@ const CoinView = () => {
 
 	const [coin, setCoin] = useState({} as coin);
 	const [loading, setLoading] = useState(true);
-	const [userLike, setUserLike] = useState({});
+	const [userLike, setUserLike] = useState();
 	const [likes, setLikes] = useState([]);
 
 	useEffect(() => {

@@ -75,7 +75,10 @@ const CoinViewHeader = ({
 				</div>
 			</div>
 			<div className={`${coinSubHeader}`}>
-				<div>likes</div>
+				<div>
+					<div onClick={onLike}>Like it</div>
+					<div>{totalLikes}</div>
+				</div>
 				<div>socials</div>
 			</div>
 		</div>

@@ -3,6 +3,11 @@ import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 
 export const onLike = async (user, setLikes, setUserLike, userLike, coin) => {
+	console.log('user', user);
+	console.log('setLikes', setLikes);
+	console.log('setUserLike', setUserLike);
+	console.log('userLike', userLike);
+	console.log('coin', coin);
 	if (!user) {
 		toast.error('Must be logged in');
 	} else {
