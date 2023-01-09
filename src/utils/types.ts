@@ -2,6 +2,7 @@ export type coin = {
 	id: string;
 	image: {
 		thumb: string;
+		small: string;
 	};
 	market_data: {
 		price_change_percentage_24h: number;
@@ -18,6 +19,9 @@ export type coin = {
 			usd: number;
 		};
 		market_cap: {
+			usd: number;
+		};
+		ath_change_percentage: {
 			usd: number;
 		};
 	};
