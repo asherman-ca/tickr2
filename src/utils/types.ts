@@ -42,3 +42,11 @@ export type sortParamType = {
 	type: string;
 	direction: string;
 };
+
+export type like = {
+	id: string;
+	data: {
+		userRef: string;
+		coinId: string;
+	};
+};

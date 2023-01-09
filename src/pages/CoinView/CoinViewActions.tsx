@@ -1,20 +1,23 @@
 import { doc, deleteDoc, collection, addDoc } from 'firebase/firestore';
-import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 
-export const onLike = async (user, setLikes, setUserLike, userLike, coin) => {
-	console.log('user', user);
-	console.log('setLikes', setLikes);
-	console.log('setUserLike', setUserLike);
-	console.log('userLike', userLike);
-	console.log('coin', coin);
+import { db } from '../../firebase.config';
+import { coin, like } from '../../utils/types';
+
+export const onLike = async (
+	user: any,
+	setLikes: any,
+	setUserLike: any,
+	userLike: any,
+	coin: coin
+) => {
 	if (!user) {
 		toast.error('Must be logged in');
 	} else {
 		if (userLike) {
 			await deleteDoc(doc(db, 'likes', userLike.id));
-			setLikes((prev) => {
-				return prev.filter((like) => like.id !== userLike.id);
+			setLikes((prev: like[]) => {
+				return prev.filter((like: like) => like.id !== userLike.id);
 			});
 			setUserLike(null);
 		} else {
@@ -29,7 +32,7 @@ export const onLike = async (user, setLikes, setUserLike, userLike, coin) => {
 					coinId: coin.id,
 				},
 			});
-			setLikes((prev) => {
+			setLikes((prev: like[]) => {
 				return [
 					...prev,
 					{
@@ -45,8 +48,8 @@ export const onLike = async (user, setLikes, setUserLike, userLike, coin) => {
 	}
 };
 
-export const tickerFilter = (coin) => {
-	const compare = (a, b) => {
+export const tickerFilter = (coin: any) => {
+	const compare = (a: any, b: any) => {
 		if (a.last < b.last) {
 			return -1;
 		} else {
@@ -55,11 +58,11 @@ export const tickerFilter = (coin) => {
 	};
 
 	const based = coin.tickers?.filter(
-		(el) => el.target === 'USDT' || el.target === 'USD'
+		(el: any) => el.target === 'USDT' || el.target === 'USD'
 	);
 
 	return based
-		.filter((el) => coin.symbol.toUpperCase() === el.base)
+		.filter((el: any) => coin.symbol.toUpperCase() === el.base)
 		.slice(0, 24)
-		.sort((a, b) => compare(a, b));
+		.sort((a: any, b: any) => compare(a, b));
 };
