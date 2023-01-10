@@ -69,3 +69,14 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.coinSubHeader > div {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.coinSubHeader i {
+	cursor: pointer;
+	font-size: 1.25rem;
+}

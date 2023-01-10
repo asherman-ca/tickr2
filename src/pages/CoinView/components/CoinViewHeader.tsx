@@ -34,7 +34,7 @@ const CoinViewHeader = ({
 					</div>
 				</div>
 				<div className={`${surHeaderCol}`}>
-					<div>price</div>
+					<div>Price</div>
 					<div>{moneyParse(coin.market_data.current_price.usd)}</div>
 				</div>
 				<div className={`${surHeaderCol}`}>
@@ -76,7 +76,13 @@ const CoinViewHeader = ({
 			</div>
 			<div className={`${coinSubHeader}`}>
 				<div>
-					<div onClick={onLike}>Like it</div>
+					{/* <div onClick={onLike}>Like it</div> */}
+					<i
+						className={
+							userLike ? 'fa-regular fa-heart filled' : 'fa-regular fa-heart'
+						}
+						onClick={onLike}
+					></i>
 					<div>{totalLikes}</div>
 				</div>
 				<div>socials</div>
