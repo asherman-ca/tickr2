@@ -85,7 +85,36 @@ const CoinViewHeader = ({
 					></i>
 					<div>{totalLikes}</div>
 				</div>
-				<div>socials</div>
+				<div>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.homepage[0]}
+					>
+						<img src={coin.image.thumb} alt='' />
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.blockchain_site[0]}
+					>
+						<i className='fa-solid fa-database'></i>
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.subreddit_url}
+					>
+						<i className='fa-brands fa-reddit'></i>
+					</a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href={coin.links.repos_url.github[0]}
+					>
+						<i className='fa-brands fa-github'></i>
+					</a>
+				</div>
 			</div>
 		</div>
 	);

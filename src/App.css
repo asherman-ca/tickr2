@@ -129,6 +129,18 @@ h3 {
 	animation: liker 0.4s ease;
 }
 
+.fa-reddit {
+	color: var(--reddit);
+}
+
+.fa-database {
+	color: var(--clr-blue);
+}
+
+.fa-github {
+	color: var(--clr-blk-button);
+}
+
 @keyframes liker {
 	0% {
 		transform: scale(1);

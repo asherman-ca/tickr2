@@ -27,6 +27,14 @@ export type coin = {
 	};
 	name: string;
 	symbol: string;
+	links: {
+		homepage: string;
+		blockchain_site: string[];
+		subreddit_url: string;
+		repos_url: {
+			github: string[];
+		};
+	};
 };
 
 export type global = {
