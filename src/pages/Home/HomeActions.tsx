@@ -4,10 +4,19 @@ import { coin, sortParamType } from '../../utils/types';
 export const displayCoinsMemo = (
 	coins: coin[],
 	loading: boolean,
-	sortParam: { type: string; direction: string }
+	sortParam: { type: string; direction: string },
+	userLikes: any
 ) => {
 	return useMemo(() => {
 		const { type, direction } = sortParam;
+		coins.map((coin) => {
+			if (userLikes.includes(coin.id)) {
+				coin.liked = true;
+				return coin;
+			} else {
+				return coin;
+			}
+		});
 
 		if (sortParam.type === 'mcap') {
 			if (sortParam.direction === 'desc') {
@@ -82,7 +91,7 @@ export const displayCoinsMemo = (
 				});
 			}
 		}
-	}, [loading, sortParam]);
+	}, [loading, sortParam, userLikes]);
 };
 
 export const handleSort = (

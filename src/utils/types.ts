@@ -36,6 +36,7 @@ export type coin = {
 		};
 	};
 	tickers: {}[];
+	liked: boolean;
 };
 
 export type global = {

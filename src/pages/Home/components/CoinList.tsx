@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../Home.module.css';
 import CoinItem from './CoinItem';
 import Pagination from '../../../components/Pagination';
@@ -7,6 +7,8 @@ import { displayCoinsMemo, handleSort } from '../HomeActions';
 import { coin } from '../../../utils/types';
 
 import { UserAuth } from '../../../context/AuthContext';
+import { query, where, collection, getDocs } from 'firebase/firestore';
+import { db } from '../../../firebase.config';
 
 type CoinListProps = {
 	coins: coin[];
@@ -16,7 +18,21 @@ type CoinListProps = {
 const rowsPerPageOptions = [10, 25, 50, 100];
 
 const CoinList = ({ coins, loading }: CoinListProps) => {
+	const [userLikes, setUserLikes] = useState([]);
 	const { user } = UserAuth();
+	useEffect(() => {
+		if (user) {
+			const apiFetch = async () => {
+				const likesRef = collection(db, 'likes');
+				const q = query(likesRef, where('userRef', '==', user.uid));
+				const querySnap = await getDocs(q);
+				let likes: any = [];
+				querySnap.forEach((el) => likes.push(el.data().coinId));
+				setUserLikes(likes);
+			};
+			apiFetch();
+		}
+	}, []);
 
 	const [sortParam, setSortParam] = useState<{
 		type: string;
@@ -25,7 +41,7 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 		type: 'mcap',
 		direction: 'desc',
 	});
-	const displayCoins = displayCoinsMemo(coins, loading, sortParam);
+	const displayCoins = displayCoinsMemo(coins, loading, sortParam, userLikes);
 	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 

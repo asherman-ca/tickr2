@@ -22,7 +22,9 @@ const CoinItem = ({ coin }: CoinItemProps) => {
 		<Link to={`/coins/${coin.id}`} className={`${coinItem}`} key={coin.id}>
 			<div className={`${coinItemTitle}`}>
 				<div>
-					<i className='fa-regular fa-star'></i>
+					<i
+						className={`${coin.liked ? `fa-solid` : `fa-regular`} fa-star`}
+					></i>
 					{coin.market_data.market_cap_rank}
 				</div>
 				<div>
