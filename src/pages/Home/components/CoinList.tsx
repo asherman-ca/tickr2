@@ -6,6 +6,8 @@ const { coinHeaderTitle, coinItems, coinListHeader } = styles;
 import { displayCoinsMemo, handleSort } from '../HomeActions';
 import { coin } from '../../../utils/types';
 
+import { UserAuth } from '../../../context/AuthContext';
+
 type CoinListProps = {
 	coins: coin[];
 	loading: boolean;
@@ -14,6 +16,8 @@ type CoinListProps = {
 const rowsPerPageOptions = [10, 25, 50, 100];
 
 const CoinList = ({ coins, loading }: CoinListProps) => {
+	const { user } = UserAuth();
+
 	const [sortParam, setSortParam] = useState<{
 		type: string;
 		direction: string;

@@ -35,6 +35,7 @@ export type coin = {
 			github: string[];
 		};
 	};
+	tickers: {}[];
 };
 
 export type global = {

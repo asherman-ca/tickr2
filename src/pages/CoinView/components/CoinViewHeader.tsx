@@ -76,7 +76,6 @@ const CoinViewHeader = ({
 			</div>
 			<div className={`${coinSubHeader}`}>
 				<div>
-					{/* <div onClick={onLike}>Like it</div> */}
 					<i
 						className={
 							userLike ? 'fa-regular fa-heart filled' : 'fa-regular fa-heart'

@@ -8,14 +8,8 @@ import { UserAuth } from '../../context/AuthContext';
 import styles from './CoinView.module.css';
 import Spinner from '../../components/Spinner';
 import CoinViewHeader from './components/CoinViewHeader';
-const {
-	coinView,
-	coinHeader,
-	coinSubHeader,
-	coinSurHeader,
-	coinMarkets,
-	coinDescription,
-} = styles;
+import CoinViewMarkets from './components/CoinViewMarkets';
+const { coinView } = styles;
 import { onLike } from './CoinViewActions';
 import { coin } from '../../utils/types';
 
@@ -84,8 +78,13 @@ const CoinView = () => {
 				totalLikes={likes.length}
 				onLike={() => onLike(user, setLikes, setUserLike, userLike, coin)}
 			/>
-
-			<div>markets</div>
+			<CoinViewMarkets
+				markets={coin.tickers
+					.filter((market: any) => market.base === coin.symbol.toUpperCase())
+					.sort((a: any, b: any) => b.volume - a.volume)
+					.slice(0, 5)}
+				title={coin.name}
+			/>
 			<div>descriptions</div>
 		</div>
 	);

@@ -1,5 +1,8 @@
 .coinView {
 	padding: 2rem 3rem;
+
+	justify-content: flex-start !important;
+	gap: 2rem;
 }
 
 .coinHeader {
@@ -60,10 +63,16 @@
 }
 
 .coinSubHeader {
-	padding: 0.5rem 1rem;
+	padding: 1rem 1rem;
 
 	display: flex;
 	justify-content: space-between;
+}
+
+.coinSubHeader img {
+	height: 20px;
+	width: 20px;
+	border-radius: 25%;
 }
 
 .coinSubHeader > div {
@@ -72,7 +81,104 @@
 	gap: 1rem;
 }
 
+.coinSubHeader > div:first-child {
+	gap: 0.5rem;
+}
+
 .coinSubHeader i {
 	cursor: pointer;
 	font-size: 1.25rem;
+}
+
+.tickers {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.tickers > div:first-child {
+	font-weight: 700;
+	font-size: 1.25rem;
+}
+
+.marketsHeader {
+	padding: 0.75rem 0.5rem;
+
+	display: flex;
+
+	border-top: 0.5px solid var(--grey-border);
+	border-bottom: 0.5px solid var(--grey-border);
+}
+
+.marketsHeader > div {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: flex-end;
+
+	font-weight: 500;
+	/* font-size: 1.1rem; */
+}
+
+.marketsHeader > div:first-child {
+	justify-content: flex-start;
+}
+
+.marketsHeader > div:first-child > div:first-child {
+	flex: 1;
+
+	font-weight: normal;
+	color: var(--grey-text);
+}
+
+.marketsHeader > div:first-child > div:last-child {
+	flex: 9;
+}
+
+.marketsTable > a {
+	padding: 0.75rem 0.5rem;
+}
+
+.marketsTable > a:hover {
+	background: rgb(248, 250, 253);
+}
+
+.tickerItem {
+	display: flex;
+	flex-direction: row;
+
+	border-bottom: 0.5px solid var(--grey-border);
+}
+
+.tickerItem img {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+
+.tickerItem > div {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.tickerItem > div:first-child {
+	justify-content: flex-start;
+
+	font-weight: 500;
+}
+
+.tickerItem > div:first-child > div:first-child {
+	flex: 1;
+
+	font-weight: normal;
+	color: var(--grey-text);
+}
+
+.tickerItem > div:first-child > div:last-child {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	flex: 9;
 }
