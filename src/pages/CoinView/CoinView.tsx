@@ -9,7 +9,7 @@ import styles from './CoinView.module.css';
 import Spinner from '../../components/Spinner';
 import CoinViewHeader from './components/CoinViewHeader';
 import CoinViewMarkets from './components/CoinViewMarkets';
-const { coinView } = styles;
+const { coinView, coinViewDesc } = styles;
 import { onLike } from './CoinViewActions';
 import { coin } from '../../utils/types';
 
@@ -85,7 +85,10 @@ const CoinView = () => {
 					.slice(0, 5)}
 				title={coin.name}
 			/>
-			<div>descriptions</div>
+			<div className={`${coinViewDesc}`}>
+				<div>About {coin.name}</div>
+				<div>{coin.description.en.replace(/<\/?a[^>]*>/g, '')}</div>
+			</div>
 		</div>
 	);
 };

@@ -14,7 +14,7 @@ const NavMenu = () => {
 	const [showDrop, setShowDrop] = useState<boolean>(false);
 
 	const onLogout = async () => {
-		logout();
+		await logout();
 		toast.info('Logged Out');
 	};
 
