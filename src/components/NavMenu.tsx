@@ -128,7 +128,7 @@ const NavMenu = () => {
 								borderBottom: '.5px solid grey',
 							}}
 						></div>
-						<div onClick={() => navigate('/account')}>
+						<div onClick={() => navigate('/exchange')}>
 							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
 						<div onClick={() => navigate('/profile')}>

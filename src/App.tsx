@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Nav from './components/Nav';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
+import Exchange from './pages/Exchange/Exchange';
 import './App.css';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
 						{/* TODO: protected */}
 						<Route element={<ProtectedRoute />}>
 							<Route path='/profile' element={<h1>profile</h1>} />
-							<Route path='/exchange' element={<h1>exchange</h1>} />
+							<Route path='/exchange' element={<Exchange />} />
 						</Route>
 						<Route path='*' element={<Navigate to='/' />} />
 					</Routes>
