@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const ProtectedRoute = () => {
 	const { user } = UserAuth();
-	console.log('user', user);
-	if (!user.uid) {
-		console.log('user2', user);
+
+	console.log('protected user', user);
+	if (!user) {
 		return <Navigate to={'/'} />;
 	} else {
 		return <Outlet />;
