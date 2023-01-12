@@ -27,10 +27,10 @@ function App() {
 						<Route path='/coins/:coinId' element={<CoinView />} />
 						<Route path='/exchanges' element={<h1>exchange list</h1>} />
 						{/* TODO: protected */}
-						<Route element={<ProtectedRoute />}>
-							<Route path='/profile' element={<h1>profile</h1>} />
-							<Route path='/exchange' element={<Exchange />} />
-						</Route>
+						{/* <Route element={<ProtectedRoute />}> */}
+						<Route path='/profile' element={<h1>profile</h1>} />
+						<Route path='/exchange' element={<Exchange />} />
+						{/* </Route> */}
 						<Route path='*' element={<Navigate to='/' />} />
 					</Routes>
 				</AuthContextProvider>
