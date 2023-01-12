@@ -23,7 +23,7 @@ const CoinItem = ({ coin }: CoinItemProps) => {
 			<div className={`${coinItemTitle}`}>
 				<div>
 					<i
-						className={`${coin.liked ? `fa-solid` : `fa-regular`} fa-star`}
+						className={`${coin.liked ? `fa-solid gold` : `fa-regular`} fa-star`}
 					></i>
 					{coin.market_data.market_cap_rank}
 				</div>

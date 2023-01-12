@@ -70,6 +70,7 @@ select {
 	--clr-buy: #44af69;
 	--clr-sell: #f8333c;
 	--reddit: #ff4500;
+	--clr-gold: #f6b87e;
 
 	--grey-text: rgb(88, 102, 126);
 	--grey-hover: rgb(239, 242, 245);
@@ -122,6 +123,10 @@ h3 {
 
 .blue {
 	color: var(--clr-blue);
+}
+
+.gold {
+	color: var(--clr-gold);
 }
 
 .filled {

@@ -21,18 +21,21 @@ const CoinList = ({ coins, loading }: CoinListProps) => {
 	const [userLikes, setUserLikes] = useState([]);
 	const { user } = UserAuth();
 	useEffect(() => {
-		if (user) {
-			const apiFetch = async () => {
-				const likesRef = collection(db, 'likes');
+		console.log('hits');
+		const apiFetch = async () => {
+			const likesRef = collection(db, 'likes');
+			if (user == null) {
+				setUserLikes([]);
+			} else {
 				const q = query(likesRef, where('userRef', '==', user.uid));
 				const querySnap = await getDocs(q);
 				let likes: any = [];
 				querySnap.forEach((el) => likes.push(el.data().coinId));
 				setUserLikes(likes);
-			};
-			apiFetch();
-		}
-	}, []);
+			}
+		};
+		apiFetch();
+	}, [user]);
 
 	const [sortParam, setSortParam] = useState<{
 		type: string;
