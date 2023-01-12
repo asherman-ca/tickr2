@@ -31,16 +31,35 @@
 	border-radius: 0.5rem;
 }
 
-.transactions,
-.assets > div:first-child {
+.assets,
+.transactions {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	overflow-y: auto;
+}
+
+:is(.transactions, .assets) > div:first-child {
 	font-size: 1.25rem;
 	font-weight: 500;
 }
 
-/* .assets > div:first-child {
-	font-size: 1.25rem;
+.orderHistoryTable header {
+	display: flex;
+
 	font-weight: 500;
-} */
+}
+
+.orderHistoryTable header > div {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.orderHistoryTable header > div:first-child {
+	justify-content: flex-start;
+}
 
 .exchangeForms {
 	display: flex;
