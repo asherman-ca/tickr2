@@ -1,11 +1,11 @@
-const calcPNL = (orders, coins) => {
-	let accounts = {};
+const calcPNL = (orders: any, coins: any) => {
+	let accounts = {} as any;
 
-	let buys = orders.filter((order) => order.data.type === 'buy');
+	let buys = orders.filter((order: any) => order.data.type === 'buy');
 
-	let sells = orders.filter((order) => order.data.type === 'sell');
+	let sells = orders.filter((order: any) => order.data.type === 'sell');
 
-	buys?.forEach((order) => {
+	buys?.forEach((order: any) => {
 		if (!accounts[order.data.coin]) {
 			accounts[order.data.coin] = {
 				coin: order.data.coin,
@@ -23,22 +23,22 @@ const calcPNL = (orders, coins) => {
 		}
 	});
 
-	Object.values(accounts).forEach((account) => {
+	Object.values(accounts).forEach((account: any) => {
 		accounts[account.coin].averagePrice = account.spent / account.total;
 	});
 
-	sells?.forEach((order) => {
+	sells?.forEach((order: any) => {
 		accounts[order.data.coin].total -= order.data.spent / order.data.price;
 		accounts[order.data.coin].earn += order.data.spent;
 		accounts[order.data.coin].totalSold += order.data.spent / order.data.price;
 	});
 
-	let PNL = [];
+	let PNL = [] as any;
 
-	Object.values(accounts).forEach((account) => {
-		if (coins?.filter((coin) => coin.name === account.coin).length > 0) {
+	Object.values(accounts).forEach((account: any) => {
+		if (coins?.filter((coin: any) => coin.name === account.coin).length > 0) {
 			const currentPrice = coins?.filter(
-				(coin) => coin.name === account.coin
+				(coin: any) => coin.name === account.coin
 			)[0].market_data.current_price.usd;
 
 			PNL.push({
@@ -58,7 +58,7 @@ const calcPNL = (orders, coins) => {
 		}
 	});
 
-	PNL.sort((a, b) => b.totalValue - a.totalValue);
+	PNL.sort((a: any, b: any) => b.totalValue - a.totalValue);
 
 	return PNL;
 };

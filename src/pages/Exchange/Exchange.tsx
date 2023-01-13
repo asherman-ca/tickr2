@@ -87,13 +87,13 @@ const Exchange = () => {
 
 				// task 3
 
-				setPnl(calcPNL(orders, response));
+				setPnl(calcPNL(orders, response) as any);
 
 				// task 4
 
 				const usersRef = doc(db, 'users', user.uid);
 				const docSnap = await getDoc(usersRef);
-				setUser(docSnap.data());
+				setUser(docSnap.data() as any);
 			};
 
 			const fetchAllTask = async () => {
