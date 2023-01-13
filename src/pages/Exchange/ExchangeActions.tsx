@@ -1,4 +1,15 @@
+import { toast } from 'react-toastify';
 import { coin } from '../../utils/types';
+import {
+	doc,
+	deleteDoc,
+	collection,
+	addDoc,
+	serverTimestamp,
+	updateDoc,
+} from 'firebase/firestore';
+import { db } from '../../firebase.config';
+import { calcPNL, invalidSell } from '../../utils/account';
 
 const onSelect = (e: any, setFormData: any, coins: any) => {
 	let price: number;
@@ -30,4 +41,70 @@ const onChange = (e: any, setFormData: any) => {
 	}));
 };
 
-export { onSelect, onChange };
+const onOrder = async (
+	e,
+	type,
+	formData,
+	orders,
+	setOrders,
+	setPnl,
+	coins,
+	userId,
+	user,
+	setUser
+) => {
+	e.preventDefault();
+	console.log('hits');
+	console.log(formData);
+
+	if (formData.price === 0 || formData.spent === 0) {
+		toast.error('Price and amount required');
+	} else {
+		if (type === 'sell' && invalidSell(orders, formData)) {
+			toast.error('Insufficient coins');
+		} else if (type === 'buy' && user.testBalance < formData.spent) {
+			toast.error('Insufficient funds');
+		} else {
+			// order tasks
+			let formDataCopy = {
+				...formData,
+				type: type,
+				timestamp: serverTimestamp(),
+			};
+
+			const res = await addDoc(collection(db, 'orders'), formDataCopy);
+			toast.success('Order created');
+
+			await setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
+			const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
+			setPnl(calcPNL(ordersCopy, coins));
+
+			// balance tasks
+			if (type === 'buy') {
+				const userRef = doc(db, 'users', userId);
+				await updateDoc(userRef, {
+					testBalance: user.testBalance - formData.spent,
+				});
+				setUser((prev) => {
+					return {
+						...prev,
+						testBalance: prev.testBalance - formData.spent,
+					};
+				});
+			} else {
+				const userRef = doc(db, 'users', userId);
+				await updateDoc(userRef, {
+					testBalance: user.testBalance + formData.spent,
+				});
+				setUser((prev) => {
+					return {
+						...prev,
+						testBalance: prev.testBalance + formData.spent,
+					};
+				});
+			}
+		}
+	}
+};
+
+export { onSelect, onChange, onOrder };

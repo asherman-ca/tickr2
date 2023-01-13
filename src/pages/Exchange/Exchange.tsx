@@ -48,7 +48,7 @@ const Exchange = () => {
 		if (user.uid) {
 			const fetchTask = async () => {
 				const ordersRef = collection(db, 'orders');
-				console.log('authUID', user.uid);
+				// console.log('authUID', user.uid);
 				const q = query(
 					ordersRef,
 					where('userRef', '==', user.uid),
@@ -84,6 +84,7 @@ const Exchange = () => {
 					coinId: response[0].id,
 					image: response[0].image.small,
 					imageLarge: response[0].image.large,
+					userRef: user.uid,
 				}));
 
 				// task 3
@@ -159,6 +160,8 @@ const Exchange = () => {
 					user={currentUser}
 					userId={user.uid}
 					setUser={setUser}
+					formData={formData}
+					setFormData={setFormData}
 				/>
 			</div>
 		</div>

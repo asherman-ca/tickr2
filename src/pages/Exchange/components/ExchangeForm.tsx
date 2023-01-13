@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { onSelect, onChange } from '../ExchangeActions';
+import { onSelect, onChange, onOrder } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
 const { orderForm, typeSelector, selected, formDiv } = styles;
 import { moneyParse } from '../../../utils/numbers';
@@ -13,14 +13,16 @@ const ExchangeForm = ({
 	user,
 	userId,
 	setUser,
+	formData,
+	setFormData,
 }: any) => {
 	const [formType, setFormType] = useState('buy');
-	const [formData, setFormData] = useState({
-		coin: '',
-		price: 0,
-		spent: 0,
-		userRef: userId,
-	});
+	// const [formData, setFormData] = useState({
+	// 	coin: '',
+	// 	price: 0,
+	// 	spent: 0,
+	// 	userRef: userId,
+	// });
 
 	return (
 		<div className={`${orderForm}`}>
@@ -71,12 +73,27 @@ const ExchangeForm = ({
 						type='number'
 					/>
 				</div>
+				<div>
+					<button
+						onClick={(e) => {
+							onOrder(
+								e,
+								formType,
+								formData,
+								orders,
+								setOrders,
+								setPnl,
+								coins,
+								userId,
+								user,
+								setUser
+							);
+						}}
+					>
+						{formType == 'buy' ? `buy` : `sell`}
+					</button>
+				</div>
 			</form>
-			{/* <div>
-				<div>input</div>
-				<div>input</div>
-				<div>button</div>
-			</div> */}
 		</div>
 	);
 };
