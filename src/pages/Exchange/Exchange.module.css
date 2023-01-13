@@ -82,7 +82,7 @@
 }
 
 .exchangeForms > div {
-	padding: 1rem;
+	/* padding: 1rem; */
 
 	box-shadow: rgba(88, 102, 126, 0.08) 0px 4px 24px,
 		rgba(88, 102, 126, 0.12) 0px 1px 2px;
@@ -90,7 +90,29 @@
 	border-radius: 0.5rem;
 }
 
-.orderForm > div:first-child {
-	font-size: 1.25rem;
-	font-weight: 500;
+.typeSelector {
+	display: flex;
+}
+
+.typeSelector > div:first-child {
+	border-right: 0.5px solid var(--grey-border);
+}
+
+.typeSelector > div {
+	flex-basis: 100%;
+	padding: 1rem;
+
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+
+	border-bottom: 0.5px solid var(--grey-border);
+}
+
+.typeSelector > div:hover {
+	background: rgb(250, 250, 250);
+}
+
+.selected {
+	border-bottom: none !important;
 }

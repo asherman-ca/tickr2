@@ -12,7 +12,8 @@ import {
 
 import { db } from '../../firebase.config';
 import Spinner from '../../components/Spinner';
-import { onSelect, onChange } from './ExchangeActions';
+// import { onSelect, onChange } from './ExchangeActions';
+import ExchangeForm from './components/ExchangeForm';
 import styles from './Exchange.module.css';
 const {
 	exchangeContainer,
@@ -150,10 +151,15 @@ const Exchange = () => {
 				</div>
 			</div>
 			<div className={`${exchangeForms}`}>
-				<div className={`${orderForm}`}>
-					<div>Order Form</div>
-					<div></div>
-				</div>
+				<ExchangeForm
+					coins={coins}
+					orders={orders}
+					setOrders={setOrders}
+					setPnl={setPnl}
+					user={currentUser}
+					userId={user.uid}
+					setUser={setUser}
+				/>
 			</div>
 		</div>
 	);
