@@ -38,7 +38,7 @@ const Exchange = () => {
 	const [formData, setFormData] = useState({
 		coin: '',
 		price: 0,
-		spent: 0,
+		spent: '',
 		userRef: user.uid,
 	});
 	const [pnl, setPnl] = useState();

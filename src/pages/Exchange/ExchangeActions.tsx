@@ -35,9 +35,16 @@ const onSelect = (e: any, setFormData: any, coins: any) => {
 };
 
 const onChange = (e: any, setFormData: any) => {
+	// setFormData((prev: any) => ({
+	// 	...prev,
+	// 	[e.target.id]: Number(e.target.value),
+	// }));
+	// console.log(formData)
 	setFormData((prev: any) => ({
 		...prev,
-		[e.target.id]: Number(e.target.value),
+		[e.target.id]: e.target.value
+			.replace(/,/g, '')
+			.replace(/(\d)(?=(\d{3})+$)/g, '$1,'),
 	}));
 };
 
@@ -56,8 +63,9 @@ const onOrder = async (
 	e.preventDefault();
 	console.log('hits');
 	console.log(formData);
+	// formData.spent = Number(formData.spent);
 
-	if (formData.price === 0 || formData.spent === 0) {
+	if (formData.price === 0 || formData.spent === '') {
 		toast.error('Price and amount required');
 	} else {
 		if (type === 'sell' && invalidSell(orders, formData)) {
@@ -71,6 +79,8 @@ const onOrder = async (
 				type: type,
 				timestamp: serverTimestamp(),
 			};
+
+			formDataCopy.spent = Number(formDataCopy.spent);
 
 			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');

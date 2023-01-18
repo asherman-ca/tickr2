@@ -164,3 +164,14 @@
 .formDiv .inputContainer:focus-within {
 	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
 }
+
+.buttonRow {
+	display: flex;
+}
+
+.buttonRow button {
+	width: 100%;
+
+	font-weight: 600;
+	border-radius: 0.5rem;
+}

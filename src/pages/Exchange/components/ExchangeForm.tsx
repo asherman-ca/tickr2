@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 
 import { onSelect, onChange, onOrder } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
-const { orderForm, typeSelector, selected, formDiv, inputContainer } = styles;
+const {
+	orderForm,
+	typeSelector,
+	selected,
+	formDiv,
+	inputContainer,
+	buttonRow,
+} = styles;
 import { moneyParse, numParse2 } from '../../../utils/numbers';
 
 const ExchangeForm = ({
@@ -70,12 +77,14 @@ const ExchangeForm = ({
 					<input
 						onChange={(e) => onChange(e, setFormData)}
 						id='spent'
-						placeholder='Amount'
-						type='number'
+						// placeholder='Amount'
+						type='text'
+						value={formData.spent}
 					/>
 				</div>
-				<div>
+				<div className={`${buttonRow}`}>
 					<button
+						className='blue-button'
 						onClick={(e) => {
 							onOrder(
 								e,
@@ -91,7 +100,7 @@ const ExchangeForm = ({
 							);
 						}}
 					>
-						{formType == 'buy' ? `buy` : `sell`}
+						{formType == 'buy' ? `Buy` : `Sell`} {formData.coin}
 					</button>
 				</div>
 			</form>
