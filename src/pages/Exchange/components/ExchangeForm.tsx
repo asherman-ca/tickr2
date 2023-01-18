@@ -77,7 +77,7 @@ const ExchangeForm = ({
 					<input
 						onChange={(e) => onChange(e, setFormData)}
 						id='spent'
-						// placeholder='Amount'
+						placeholder='Amount'
 						type='text'
 						value={formData.spent}
 					/>

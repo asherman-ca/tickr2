@@ -49,16 +49,16 @@ const onChange = (e: any, setFormData: any) => {
 };
 
 const onOrder = async (
-	e,
-	type,
-	formData,
-	orders,
-	setOrders,
-	setPnl,
-	coins,
-	userId,
-	user,
-	setUser
+	e: any,
+	type: any,
+	formData: any,
+	orders: any,
+	setOrders: any,
+	setPnl: any,
+	coins: any,
+	userId: any,
+	user: any,
+	setUser: any
 ) => {
 	e.preventDefault();
 	console.log('hits');
@@ -85,7 +85,10 @@ const onOrder = async (
 			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');
 
-			await setOrders((prev) => [{ data: formDataCopy, id: res.id }, ...prev]);
+			await setOrders((prev: any) => [
+				{ data: formDataCopy, id: res.id },
+				...prev,
+			]);
 			const ordersCopy = [...orders, { data: formDataCopy, id: res.id }];
 			setPnl(calcPNL(ordersCopy, coins));
 
@@ -95,7 +98,7 @@ const onOrder = async (
 				await updateDoc(userRef, {
 					testBalance: user.testBalance - formData.spent,
 				});
-				setUser((prev) => {
+				setUser((prev: any) => {
 					return {
 						...prev,
 						testBalance: prev.testBalance - formData.spent,
@@ -106,7 +109,7 @@ const onOrder = async (
 				await updateDoc(userRef, {
 					testBalance: user.testBalance + formData.spent,
 				});
-				setUser((prev) => {
+				setUser((prev: any) => {
 					return {
 						...prev,
 						testBalance: prev.testBalance + formData.spent,
