@@ -34,7 +34,7 @@ const invalidSell = (orders: order[], newOrder: newOrder) => {
 	return false;
 };
 
-const calcPNL = (orders: any, coins: any) => {
+const calcPNL = (orders: order[], coins: coin[]) => {
 	let accounts = {} as any;
 
 	let buys = orders.filter((order: any) => order.data.type === 'buy');

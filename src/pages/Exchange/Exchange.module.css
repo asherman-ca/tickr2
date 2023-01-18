@@ -116,3 +116,51 @@
 .selected {
 	border-bottom: none !important;
 }
+
+.formDiv {
+	padding: 1rem;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.inputContainer {
+	padding: 0.25rem 0.5rem;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.1rem;
+
+	border-radius: 0.5rem;
+	border: 1px solid var(--grey-border);
+	font-size: 1rem;
+	color: var(--clr-grey);
+}
+
+.inputContainer input {
+	padding: 0.25rem;
+
+	width: 100%;
+	height: 100%;
+	border-bottom: none;
+	border-color: transparent;
+	color: var(--clr-grey);
+	font-size: 1rem;
+	background: white;
+}
+
+.formDiv select {
+	padding: 0.65rem !important;
+	width: 100%;
+}
+
+.formDiv :is(input, select):focus-within {
+	outline: none;
+	color: black;
+}
+
+.formDiv .inputContainer:focus-within {
+	box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+}

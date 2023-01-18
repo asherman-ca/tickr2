@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { onSelect, onChange, onOrder } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
-const { orderForm, typeSelector, selected, formDiv } = styles;
+const { orderForm, typeSelector, selected, formDiv, inputContainer } = styles;
 import { moneyParse } from '../../../utils/numbers';
 
 const ExchangeForm = ({
@@ -42,6 +42,7 @@ const ExchangeForm = ({
 			</div>
 			<form className={`${formDiv}`}>
 				<select
+					className={`${inputContainer}`}
 					name='coin'
 					id='coin'
 					onChange={(e) => onSelect(e, setFormData, coins)}
@@ -52,8 +53,7 @@ const ExchangeForm = ({
 						</option>
 					))}
 				</select>
-				<div className='input-container'>
-					<div>$</div>
+				<div className={`${inputContainer}`}>
 					<input
 						// onChange={(e) => onChange(e, setFormData)}
 						id='price'
@@ -64,7 +64,7 @@ const ExchangeForm = ({
 						className='disabled-input'
 					/>
 				</div>
-				<div className='input-container'>
+				<div className={`${inputContainer}`}>
 					<div>$</div>
 					<input
 						onChange={(e) => onChange(e, setFormData)}
