@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { onSelect, onChange, onOrder } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
 const { orderForm, typeSelector, selected, formDiv, inputContainer } = styles;
-import { moneyParse } from '../../../utils/numbers';
+import { moneyParse, numParse2 } from '../../../utils/numbers';
 
 const ExchangeForm = ({
 	coins,
@@ -54,10 +54,11 @@ const ExchangeForm = ({
 					))}
 				</select>
 				<div className={`${inputContainer}`}>
+					<div>$</div>
 					<input
 						// onChange={(e) => onChange(e, setFormData)}
 						id='price'
-						placeholder={moneyParse(formData.price) as string}
+						placeholder={numParse2(formData.price) as string}
 						// value={moneyParse(formData.price)}
 						type='number'
 						disabled={true}

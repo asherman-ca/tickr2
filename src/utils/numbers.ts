@@ -6,7 +6,15 @@ export const moneyParse = (num: number) => {
 			minimumFractionDigits: 2,
 		};
 
-		if (num > 1000000000) {
+		const smlOptions = {
+			style: 'currency',
+			currency: 'USD',
+			minimumFractionDigits: 6,
+		};
+
+		if (num < 0.1) {
+			return num.toLocaleString('en-US', smlOptions);
+		} else if (num > 1000000000) {
 			return (num / 1000000000).toLocaleString('en-US', options) + 'B';
 		} else if (num > 1000000) {
 			return (num / 1000000).toLocaleString('en-US', options) + 'M';
@@ -26,8 +34,18 @@ export const numberParse = (num: number) => {
 };
 
 export const numParse2 = (num: number) => {
-	const f = Intl.NumberFormat('en-us');
-	return f.format(num);
+	const f = Intl.NumberFormat('en-us', {
+		minimumFractionDigits: 2,
+	});
+	const smlF = Intl.NumberFormat('en-us', {
+		minimumFractionDigits: 6,
+	});
+
+	if (num < 0.1) {
+		return smlF.format(num);
+	} else {
+		return f.format(num);
+	}
 };
 
 export const moneyParse2 = (num: number) => {
