@@ -1,15 +1,17 @@
-const invalidSell = (orders, newOrder) => {
+import { order, coin, like, newOrder } from './types';
+
+const invalidSell = (orders: order[], newOrder: newOrder) => {
 	if (!orders.length) {
 		return true;
 	}
 
-	let accounts = {};
+	let accounts = {} as any;
 
-	let buys = orders.filter((order) => order.data.type === 'buy');
+	let buys = orders.filter((order: order) => order.data.type === 'buy');
 
-	let sells = orders.filter((order) => order.data.type === 'sell');
+	let sells = orders.filter((order: order) => order.data.type === 'sell');
 
-	buys?.forEach((order) => {
+	buys?.forEach((order: order) => {
 		if (!accounts[order.data.coin]) {
 			accounts[order.data.coin] = {
 				coin: order.data.coin,

@@ -64,3 +64,24 @@ export type like = {
 		coinId: string;
 	};
 };
+
+export type order = {
+	id: string;
+	data: {
+		coin: string;
+		coinId: string;
+		image: string;
+		imageLarge: string;
+		price: number;
+		spent: number;
+		timestamp: string;
+		type: string;
+		userRef: string;
+	};
+};
+
+export type newOrder = {
+	coin: string;
+	spent: number;
+	price: number;
+};
