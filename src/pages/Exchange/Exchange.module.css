@@ -67,11 +67,12 @@
 	justify-content: flex-start;
 }
 
-.orderHistoryTable > div {
+:is(.orderHistoryTable, .pnlTable) > div {
 	display: flex;
 }
 
-.orderItem {
+.orderItem,
+.pnlItem {
 	padding: 0.5rem 0;
 	border-bottom: 0.5px solid var(--grey-border);
 }
@@ -80,14 +81,14 @@
 	border-bottom: none;
 }
 
-.orderItem > div {
+:is(.orderItem, .pnlItem) > div {
 	flex-basis: 100%;
 
 	display: flex;
 	justify-content: flex-end;
 }
 
-.orderItem > div:first-child {
+:is(.orderItem, .pnlItem) > div:first-child {
 	justify-content: flex-start;
 }
 

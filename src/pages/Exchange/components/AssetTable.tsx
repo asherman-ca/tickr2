@@ -5,6 +5,7 @@ const { pnlTable, pnlItem } = styles;
 import { numberParse, moneyParse } from '../../../utils/numbers';
 
 const AssetTable = ({ pnl }: any) => {
+	console.log('pnl', pnl);
 	return (
 		<div className={`${pnlTable}`}>
 			<header>
@@ -15,7 +16,25 @@ const AssetTable = ({ pnl }: any) => {
 				<div>Avg Price</div>
 			</header>
 			{pnl.map((asset: any) => {
-				return <div className={`${pnlItem}`}>pnl item</div>;
+				return (
+					<div className={`${pnlItem}`}>
+						<div>{asset.coin}</div>
+						<div>{moneyParse(asset.totalValue)}</div>
+						<div
+							className={`${asset.pnl > 0 && 'pos'} ${asset.pnl < 0 && 'neg'}`}
+						>
+							{moneyParse(asset.pnl)}
+						</div>
+						<div
+							className={`${asset.rpnl > 0 && 'pos'} ${
+								asset.rpnl < 0 && 'neg'
+							}`}
+						>
+							{moneyParse(asset.rpnl)}
+						</div>
+						<div>{moneyParse(asset.averagePrice)}</div>
+					</div>
+				);
 			})}
 		</div>
 	);
