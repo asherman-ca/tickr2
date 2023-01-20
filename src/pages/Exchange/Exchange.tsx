@@ -12,7 +12,6 @@ import {
 
 import { db } from '../../firebase.config';
 import Spinner from '../../components/Spinner';
-// import { onSelect, onChange } from './ExchangeActions';
 import ExchangeForm from './components/ExchangeForm';
 import styles from './Exchange.module.css';
 const {
@@ -21,20 +20,19 @@ const {
 	exchangeForms,
 	transactions,
 	assets,
-	orderForm,
 	orderHistoryTable,
-	assetTable,
 } = styles;
-
 import { UserAuth } from '../../context/AuthContext';
 import { calcPNL } from '../../utils/account';
+import OrderTable from './components/OrderTable';
+import AssetTable from './components/AssetTable';
+import { order } from '../../utils/types';
 
 const Exchange = () => {
-	// const auth = getAuth() as any;
 	const { user } = UserAuth();
 	const [loading, setLoading] = useState(true);
 	const [coins, setCoins] = useState();
-	const [orders, setOrders] = useState();
+	const [orders, setOrders] = useState<order[]>();
 	const [formData, setFormData] = useState({
 		coin: '',
 		price: 0,
@@ -96,14 +94,16 @@ const Exchange = () => {
 				const usersRef = doc(db, 'users', user.uid);
 				const docSnap = await getDoc(usersRef);
 				setUser(docSnap.data() as any);
-			};
-
-			const fetchAllTask = async () => {
-				await fetchTask();
 				setLoading(false);
 			};
 
-			fetchAllTask();
+			// const fetchAllTask = async () => {
+			// 	await fetchTask();
+			// 	setLoading(false);
+			// };
+
+			// fetchAllTask();
+			fetchTask();
 		}
 	}, [user.uid]);
 
@@ -120,35 +120,11 @@ const Exchange = () => {
 			<div className={`${exchangeTables}`}>
 				<div className={`${transactions}`}>
 					<div>Order History</div>
-					<div className={`${orderHistoryTable}`}>
-						<header>
-							<div>Coin</div>
-							<div>Value</div>
-							<div>Type</div>
-							<div>Quantity</div>
-							<div>Price</div>
-						</header>
-						<div>
-							<div>1</div>
-							<div>2</div>
-						</div>
-					</div>
+					<OrderTable orders={orders} />
 				</div>
 				<div className={`${assets}`}>
 					<div>Assets</div>
-					<div className={`${orderHistoryTable}`}>
-						<header>
-							<div>Coin</div>
-							<div>Value</div>
-							<div>U/PNL</div>
-							<div>R/PNL</div>
-							<div>Avg Price</div>
-						</header>
-						<div>
-							<div>1</div>
-							<div>2</div>
-						</div>
-					</div>
+					<AssetTable pnl={pnl} />
 				</div>
 			</div>
 			<div className={`${exchangeForms}`}>

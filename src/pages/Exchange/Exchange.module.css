@@ -45,7 +45,9 @@
 	font-weight: 500;
 }
 
-.orderHistoryTable header {
+/* OrderTable */
+
+:is(.orderHistoryTable, .pnlTable) header {
 	padding: 0.5rem 0;
 
 	display: flex;
@@ -55,25 +57,41 @@
 	font-weight: 500;
 }
 
-.orderHistoryTable header > div {
+:is(.orderHistoryTable, .pnlTable) header > div {
 	flex-basis: 100%;
 	display: flex;
 	justify-content: flex-end;
 }
 
-.orderHistoryTable header > div:first-child {
+:is(.orderHistoryTable, .pnlTable) header > div:first-child {
 	justify-content: flex-start;
 }
 
 .orderHistoryTable > div {
 	display: flex;
-	flex-direction: column;
 }
 
-.orderHistoryTable > div > div {
+.orderItem {
 	padding: 0.5rem 0;
 	border-bottom: 0.5px solid var(--grey-border);
 }
+
+.orderHistoryTable > .orderItem:last-child {
+	border-bottom: none;
+}
+
+.orderItem > div {
+	flex-basis: 100%;
+
+	display: flex;
+	justify-content: flex-end;
+}
+
+.orderItem > div:first-child {
+	justify-content: flex-start;
+}
+
+/* Order Form */
 
 .exchangeForms {
 	display: flex;
