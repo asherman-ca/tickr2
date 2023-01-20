@@ -80,7 +80,8 @@ const onOrder = async (
 				timestamp: serverTimestamp(),
 			};
 
-			formDataCopy.spent = Number(formDataCopy.spent);
+			formDataCopy.spent = Number(formDataCopy.spent.replace(/,/g, ''));
+			console.log('formdatacopy', formDataCopy);
 
 			const res = await addDoc(collection(db, 'orders'), formDataCopy);
 			toast.success('Order created');

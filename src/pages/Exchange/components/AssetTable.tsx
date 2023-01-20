@@ -2,10 +2,9 @@ import React from 'react';
 import styles from '../Exchange.module.css';
 const { pnlTable, pnlItem } = styles;
 
-import { numberParse, moneyParse } from '../../../utils/numbers';
+import { moneyParse } from '../../../utils/numbers';
 
 const AssetTable = ({ pnl }: any) => {
-	console.log('pnl', pnl);
 	return (
 		<div className={`${pnlTable}`}>
 			<header>
