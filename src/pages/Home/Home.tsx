@@ -7,10 +7,14 @@ import Trending from './components/Trending';
 import Spinner from '../../components/Spinner';
 const { body, header, homeContainer, subHeader } = styles;
 
+import { UserAuth } from '../../context/AuthContext';
+
 const home = () => {
 	const { coins, loading, global } = CoinsData();
+	const { user } = UserAuth();
+	console.log('user', user);
 
-	if (loading) {
+	if (loading || user == false) {
 		return (
 			<div className={`${homeContainer} container`}>
 				<Spinner />

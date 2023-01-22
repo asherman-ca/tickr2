@@ -34,7 +34,7 @@ interface AppContextInterface {
 const UserContext = createContext<AppContextInterface | null>(null);
 
 export const AuthContextProvider = ({ children }: any) => {
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState(false);
 
 	const createUser = async (navigate: any, formData: any) => {
 		console.log('formData', formData);
