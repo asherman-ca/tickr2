@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { numberParse, moneyParse } from '../../utils/numbers';
 import { CoinsData } from '../../context/CoinContext';
 import CoinList from './components/CoinList';
@@ -8,13 +8,35 @@ import Spinner from '../../components/Spinner';
 const { body, header, homeContainer, subHeader } = styles;
 
 import { UserAuth } from '../../context/AuthContext';
+import { query, where, collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase.config';
 
 const home = () => {
 	const { coins, loading, global } = CoinsData();
 	const { user } = UserAuth();
+	const [userLikes, setUserLikes] = useState([]);
 	console.log('user', user);
+	const [likeLoading, setLikeLoading] = useState(true);
 
-	if (loading || user == false) {
+	useEffect(() => {
+		console.log('hits');
+		const apiFetch = async () => {
+			const likesRef = collection(db, 'likes');
+			if (user == null) {
+				setUserLikes([]);
+			} else {
+				const q = query(likesRef, where('userRef', '==', user.uid));
+				const querySnap = await getDocs(q);
+				let likes: any = [];
+				querySnap.forEach((el) => likes.push(el.data().coinId));
+				setUserLikes(likes);
+			}
+			setLikeLoading(false);
+		};
+		apiFetch();
+	}, [user]);
+
+	if (loading || user == false || likeLoading) {
 		return (
 			<div className={`${homeContainer} container`}>
 				<Spinner />
@@ -43,7 +65,7 @@ const home = () => {
 			</div>
 			<Trending coins={[...coins]} />
 			<div className={`${body}`}>
-				<CoinList coins={coins} loading={loading} />
+				<CoinList coins={coins} loading={loading} userLikes={userLikes} />
 			</div>
 		</div>
 	);
