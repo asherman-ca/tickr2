@@ -56,6 +56,8 @@
 /* OrderTable */
 
 :is(.orderHistoryTable, .pnlTable) header {
+	position: sticky;
+	top: 0;
 	padding: 0.5rem 1rem;
 
 	display: flex;
@@ -63,6 +65,7 @@
 	border-top: 0.5px solid var(--grey-border);
 	border-bottom: 0.5px solid var(--grey-border);
 	font-weight: 500;
+	background: white;
 }
 
 :is(.orderHistoryTable, .pnlTable) header > div {
@@ -118,6 +121,7 @@
 		rgba(88, 102, 126, 0.12) 0px 1px 2px;
 	background: white;
 	border-radius: 0.5rem;
+	border: 0.5px solid var(--grey-border);
 }
 
 .typeSelector {
