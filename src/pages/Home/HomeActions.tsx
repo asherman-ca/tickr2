@@ -8,7 +8,6 @@ export const displayCoinsMemo = (
 	userLikes: any
 ) => {
 	return useMemo(() => {
-		console.log('hits memo likes', userLikes);
 		const { type, direction } = sortParam;
 		coins.map((coin) => {
 			if (userLikes.includes(coin.id)) {

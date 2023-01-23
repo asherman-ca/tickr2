@@ -495,14 +495,14 @@ button {
 	/* border-bottom-right-radius: 0.5rem; */
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 	.search-prefill {
 		width: 100%;
 	}
 	.nav-link-dropdown {
 		width: 100%;
 	}
-}
+} */
 
 @keyframes grow {
 	from {

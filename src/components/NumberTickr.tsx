@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { moneyParse } from '../utils/numbers';
 
 const NumberTickr = ({ newVal }: any) => {
-	console.log('hits', newVal);
 	const [displayVal, setDisplayVal] = useState(Number(newVal));
 
 	useEffect(() => {
