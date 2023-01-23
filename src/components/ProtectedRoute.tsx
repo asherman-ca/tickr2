@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ProtectedRoute = () => {
 	const { user } = UserAuth();
 
-	if (!user) {
+	if (user == null) {
 		return <Navigate to={'/'} />;
 	} else {
 		return <Outlet />;

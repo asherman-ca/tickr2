@@ -52,10 +52,13 @@ export const moneyParse2 = (num: number) => {
 	const f = Intl.NumberFormat('en-us', {
 		currency: 'USD',
 		style: 'currency',
+		minimumFractionDigits: 2,
 	});
 
 	// use cntrl + space to reveal config option inside the brackets
 	const f2 = Intl.NumberFormat(undefined, {
 		notation: 'compact',
 	});
+
+	return f.format(num);
 };

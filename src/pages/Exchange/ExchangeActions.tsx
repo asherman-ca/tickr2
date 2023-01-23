@@ -61,10 +61,6 @@ const onOrder = async (
 	setUser: any
 ) => {
 	e.preventDefault();
-	console.log('hits');
-	console.log(formData);
-	// formData.spent = Number(formData.spent);
-
 	if (formData.price === 0 || formData.spent === '') {
 		toast.error('Price and amount required');
 	} else {
@@ -97,23 +93,23 @@ const onOrder = async (
 			if (type === 'buy') {
 				const userRef = doc(db, 'users', userId);
 				await updateDoc(userRef, {
-					testBalance: user.testBalance - formData.spent,
+					testBalance: user.testBalance - formDataCopy.spent,
 				});
 				setUser((prev: any) => {
 					return {
 						...prev,
-						testBalance: prev.testBalance - formData.spent,
+						testBalance: prev.testBalance - formDataCopy.spent,
 					};
 				});
 			} else {
 				const userRef = doc(db, 'users', userId);
 				await updateDoc(userRef, {
-					testBalance: user.testBalance + formData.spent,
+					testBalance: user.testBalance + formDataCopy.spent,
 				});
 				setUser((prev: any) => {
 					return {
 						...prev,
-						testBalance: prev.testBalance + formData.spent,
+						testBalance: prev.testBalance + formDataCopy.spent,
 					};
 				});
 			}

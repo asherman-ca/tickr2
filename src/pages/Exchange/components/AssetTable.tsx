@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../Exchange.module.css';
 const { pnlTable, pnlItem } = styles;
 
-import { moneyParse } from '../../../utils/numbers';
+import { moneyParse, moneyParse2 } from '../../../utils/numbers';
 
 const AssetTable = ({ pnl }: any) => {
 	return (
@@ -15,6 +15,9 @@ const AssetTable = ({ pnl }: any) => {
 				<div>Avg Price</div>
 			</header>
 			{pnl.map((asset: any) => {
+				{
+					console.log('asset', asset);
+				}
 				return (
 					<div className={`${pnlItem}`}>
 						<div>{asset.coin}</div>
@@ -22,14 +25,14 @@ const AssetTable = ({ pnl }: any) => {
 						<div
 							className={`${asset.pnl > 0 && 'pos'} ${asset.pnl < 0 && 'neg'}`}
 						>
-							{moneyParse(asset.pnl)}
+							{moneyParse2(asset.pnl)}
 						</div>
 						<div
 							className={`${asset.rpnl > 0 && 'pos'} ${
 								asset.rpnl < 0 && 'neg'
 							}`}
 						>
-							{moneyParse(asset.rpnl)}
+							{moneyParse2(asset.rpnl)}
 						</div>
 						<div>{moneyParse(asset.averagePrice)}</div>
 					</div>

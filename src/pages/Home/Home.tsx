@@ -15,16 +15,12 @@ const home = () => {
 	const { coins, loading, global } = CoinsData();
 	const { user } = UserAuth();
 	const [userLikes, setUserLikes] = useState([]);
-	console.log('user', user);
 	const [likeLoading, setLikeLoading] = useState(true);
 
 	useEffect(() => {
-		console.log('hits');
 		const apiFetch = async () => {
-			const likesRef = collection(db, 'likes');
-			if (user == null) {
-				setUserLikes([]);
-			} else {
+			if (user) {
+				const likesRef = collection(db, 'likes');
 				const q = query(likesRef, where('userRef', '==', user.uid));
 				const querySnap = await getDocs(q);
 				let likes: any = [];

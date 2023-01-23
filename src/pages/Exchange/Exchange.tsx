@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getAuth } from 'firebase/auth';
 import {
 	query,
 	where,
@@ -27,6 +26,7 @@ import { calcPNL } from '../../utils/account';
 import OrderTable from './components/OrderTable';
 import AssetTable from './components/AssetTable';
 import { order } from '../../utils/types';
+import FaucetForm from './components/FaucetForm';
 
 const Exchange = () => {
 	const { user } = UserAuth();
@@ -46,7 +46,6 @@ const Exchange = () => {
 		if (user.uid) {
 			const fetchTask = async () => {
 				const ordersRef = collection(db, 'orders');
-				// console.log('authUID', user.uid);
 				const q = query(
 					ordersRef,
 					where('userRef', '==', user.uid),
@@ -139,6 +138,7 @@ const Exchange = () => {
 					formData={formData}
 					setFormData={setFormData}
 				/>
+				<FaucetForm user={user} />
 			</div>
 		</div>
 	);

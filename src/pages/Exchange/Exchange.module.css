@@ -95,9 +95,11 @@
 /* Order Form */
 
 .exchangeForms {
+	flex: 1;
+
 	display: flex;
 	flex-direction: column;
-	flex: 1;
+	gap: 1rem;
 }
 
 .exchangeForms > div {
@@ -194,4 +196,7 @@
 
 	font-weight: 600;
 	border-radius: 0.5rem;
+}
+
+.faucetForm {
 }

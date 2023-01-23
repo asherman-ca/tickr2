@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { onSelect, onChange, onOrder } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
@@ -10,7 +10,7 @@ const {
 	inputContainer,
 	buttonRow,
 } = styles;
-import { moneyParse, numParse2 } from '../../../utils/numbers';
+import { numParse2 } from '../../../utils/numbers';
 
 const ExchangeForm = ({
 	coins,
@@ -24,12 +24,6 @@ const ExchangeForm = ({
 	setFormData,
 }: any) => {
 	const [formType, setFormType] = useState('buy');
-	// const [formData, setFormData] = useState({
-	// 	coin: '',
-	// 	price: 0,
-	// 	spent: 0,
-	// 	userRef: userId,
-	// });
 
 	return (
 		<div className={`${orderForm}`}>
@@ -63,10 +57,8 @@ const ExchangeForm = ({
 				<div className={`${inputContainer}`}>
 					<div>$</div>
 					<input
-						// onChange={(e) => onChange(e, setFormData)}
 						id='price'
 						placeholder={numParse2(formData.price) as string}
-						// value={moneyParse(formData.price)}
 						type='number'
 						disabled={true}
 						className='disabled-input'

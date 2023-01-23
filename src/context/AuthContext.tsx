@@ -65,7 +65,7 @@ export const AuthContextProvider = ({ children }: any) => {
 
 				await setDoc(doc(db, 'users', user.uid), formDataCopy);
 				toast.success('User created');
-				navigate('/account');
+				navigate('/exchange');
 			} catch (error) {
 				console.log(error);
 				toast.error('Server error');
@@ -84,7 +84,7 @@ export const AuthContextProvider = ({ children }: any) => {
 			);
 
 			if (userCredential.user) {
-				navigate('/account');
+				navigate('/exchange');
 			}
 		} catch (error) {
 			toast.error('Invalid credentials');
@@ -113,7 +113,7 @@ export const AuthContextProvider = ({ children }: any) => {
 					lastFaucet: '',
 				});
 			}
-			navigate('/profile');
+			navigate('/exchange');
 		} catch (error) {
 			toast.error('Could not authorize with Google');
 		}

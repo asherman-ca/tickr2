@@ -6,10 +6,6 @@ const { coinHeaderTitle, coinItems, coinListHeader } = styles;
 import { displayCoinsMemo, handleSort } from '../HomeActions';
 import { coin } from '../../../utils/types';
 
-import { UserAuth } from '../../../context/AuthContext';
-import { query, where, collection, getDocs } from 'firebase/firestore';
-import { db } from '../../../firebase.config';
-
 type CoinListProps = {
 	coins: coin[];
 	loading: boolean;
@@ -19,25 +15,6 @@ type CoinListProps = {
 const rowsPerPageOptions = [10, 25, 50, 100];
 
 const CoinList = ({ coins, loading, userLikes }: CoinListProps) => {
-	// const [userLikes, setUserLikes] = useState([]);
-	// const { user } = UserAuth();
-	// useEffect(() => {
-	// 	console.log('hits');
-	// 	const apiFetch = async () => {
-	// 		const likesRef = collection(db, 'likes');
-	// 		if (user == null) {
-	// 			setUserLikes([]);
-	// 		} else {
-	// 			const q = query(likesRef, where('userRef', '==', user.uid));
-	// 			const querySnap = await getDocs(q);
-	// 			let likes: any = [];
-	// 			querySnap.forEach((el) => likes.push(el.data().coinId));
-	// 			setUserLikes(likes);
-	// 		}
-	// 	};
-	// 	apiFetch();
-	// }, [user]);
-
 	const [sortParam, setSortParam] = useState<{
 		type: string;
 		direction: string;
