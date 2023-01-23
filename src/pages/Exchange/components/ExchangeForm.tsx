@@ -13,6 +13,7 @@ const {
 	faucetButtonRow,
 } = styles;
 import { numParse2, moneyParse } from '../../../utils/numbers';
+import NumberTickr from '../../../components/NumberTickr';
 
 const ExchangeForm = ({
 	coins,
@@ -101,7 +102,7 @@ const ExchangeForm = ({
 			<form className={`${formDiv} ${faucetForm}`}>
 				<div>
 					<div>USD balance</div>
-					<div>{moneyParse(user.testBalance)}</div>
+					<NumberTickr newVal={user.testBalance} />
 				</div>
 				<div className={`${faucetButtonRow}`}>
 					<button onClick={(e) => onFaucet(e, userId, user, setUser)}>
