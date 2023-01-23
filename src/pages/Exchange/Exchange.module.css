@@ -199,4 +199,21 @@
 }
 
 .faucetForm {
+	gap: 0.5rem;
+	justify-content: flex-start;
+}
+
+.faucetForm > div:first-child {
+	display: flex;
+	justify-content: space-between;
+}
+
+.faucetButtonRow {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.faucetForm button {
+	font-weight: 500;
+	color: var(--clr-blue);
 }

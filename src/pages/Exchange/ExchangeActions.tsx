@@ -117,4 +117,25 @@ const onOrder = async (
 	}
 };
 
-export { onSelect, onChange, onOrder };
+const onFaucet = async (e: any, uid: string, user: any, setUser: any) => {
+	e.preventDefault();
+	const currentSeconds = new Date().getTime() / 1000;
+	if (new Date().getTime() / 1000 < user.lastFaucet?.seconds + 86400) {
+		toast.error('1 faucet per day');
+	} else {
+		const userRef = doc(db, 'users', uid);
+		await updateDoc(userRef, {
+			testBalance: user.testBalance + 1000,
+			lastFaucet: serverTimestamp(),
+		});
+		setUser((prev: any) => {
+			return {
+				...prev,
+				testBalance: (prev.testBalance += 1000),
+				lastFaucet: { seconds: currentSeconds },
+			};
+		});
+	}
+};
+
+export { onSelect, onChange, onOrder, onFaucet };

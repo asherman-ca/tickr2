@@ -19,14 +19,12 @@ const {
 	exchangeForms,
 	transactions,
 	assets,
-	orderHistoryTable,
 } = styles;
 import { UserAuth } from '../../context/AuthContext';
 import { calcPNL } from '../../utils/account';
 import OrderTable from './components/OrderTable';
 import AssetTable from './components/AssetTable';
 import { order } from '../../utils/types';
-import FaucetForm from './components/FaucetForm';
 
 const Exchange = () => {
 	const { user } = UserAuth();
@@ -72,7 +70,6 @@ const Exchange = () => {
 				}
 				const response = await ref.json();
 				setCoins(response);
-				console.log('response', response);
 
 				setFormData((prev) => ({
 					...prev,
@@ -138,7 +135,6 @@ const Exchange = () => {
 					formData={formData}
 					setFormData={setFormData}
 				/>
-				<FaucetForm user={user} />
 			</div>
 		</div>
 	);

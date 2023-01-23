@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { onSelect, onChange, onOrder } from '../ExchangeActions';
+import { onSelect, onChange, onOrder, onFaucet } from '../ExchangeActions';
 import styles from '../Exchange.module.css';
 const {
 	orderForm,
@@ -9,8 +9,10 @@ const {
 	formDiv,
 	inputContainer,
 	buttonRow,
+	faucetForm,
+	faucetButtonRow,
 } = styles;
-import { numParse2 } from '../../../utils/numbers';
+import { numParse2, moneyParse } from '../../../utils/numbers';
 
 const ExchangeForm = ({
 	coins,
@@ -93,6 +95,17 @@ const ExchangeForm = ({
 						}}
 					>
 						{formType == 'buy' ? `Buy` : `Sell`} {formData.coin}
+					</button>
+				</div>
+			</form>
+			<form className={`${formDiv} ${faucetForm}`}>
+				<div>
+					<div>USD balance</div>
+					<div>{moneyParse(user.testBalance)}</div>
+				</div>
+				<div className={`${faucetButtonRow}`}>
+					<button onClick={(e) => onFaucet(e, userId, user, setUser)}>
+						Faucet
 					</button>
 				</div>
 			</form>

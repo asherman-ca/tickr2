@@ -15,11 +15,8 @@ const AssetTable = ({ pnl }: any) => {
 				<div>Avg Price</div>
 			</header>
 			{pnl.map((asset: any) => {
-				{
-					console.log('asset', asset);
-				}
 				return (
-					<div className={`${pnlItem}`}>
+					<div className={`${pnlItem}`} key={asset.coin}>
 						<div>{asset.coin}</div>
 						<div>{moneyParse(asset.totalValue)}</div>
 						<div
