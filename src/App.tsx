@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
 import Exchange from './pages/Exchange/Exchange';
+import Exchanges from './pages/Exchanges/Exchanges';
 import './App.css';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 						<Route path='/signin' element={<SignIn />} />
 						<Route path='/password-reset' element={<h1>password reset</h1>} />
 						<Route path='/coins/:coinId' element={<CoinView />} />
-						<Route path='/exchanges' element={<h1>exchange list</h1>} />
+						<Route path='/exchanges' element={<Exchanges />} />
 						<Route element={<ProtectedRoute />}>
 							<Route path='/profile' element={<h1>profile</h1>} />
 							<Route path='/exchange' element={<Exchange />} />

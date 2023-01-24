@@ -29,7 +29,7 @@ const OrderTable = ({ orders }: orderTableProps) => {
 								{order.data.type}
 							</div>
 							<div>{numberParse(order.data.spent / order.data.price)}</div>
-							<div>{order.data.price}</div>
+							<div>{moneyParse(order.data.price)}</div>
 						</div>
 					);
 				})}
