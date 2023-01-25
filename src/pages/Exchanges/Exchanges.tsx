@@ -25,6 +25,33 @@ const Exchanges = () => {
 		apiFetch();
 	}, []);
 
+	// useEffect(() => {
+	// 	const apiFetch = async () => {
+	// 		const ref = await fetch(
+	// 			`https://api.coingecko.com/api/v3/exchanges?per_page=20`
+	// 		);
+	// 		if (!ref.ok) {
+	// 			throw new Error('Thrown Error Thrown');
+	// 		}
+	// 		const response = await ref.json();
+
+	// 		const exchangesTemp = (await Promise.all(
+	// 			response.map(async (exchange: any) => {
+	// 				const ref = await fetch(
+	// 					`https://api.coingecko.com/api/v3/exchanges/${exchange.id}`
+	// 				);
+	// 				if (!ref.ok) {
+	// 					throw new Error('Exchange fetch failed');
+	// 				}
+	// 				return await ref.json();
+	// 			})
+	// 		)) as any;
+	// 		setExchanges(exchangesTemp);
+	// 		setLoading(false);
+	// 	};
+	// 	apiFetch();
+	// }, []);
+
 	if (loading) {
 		return (
 			<div className={`container ${exchangesContainer}`}>
@@ -49,7 +76,7 @@ const Exchanges = () => {
 						<div>Exchange</div>
 					</div>
 					<div>Score</div>
-					<div>BTC Trading Volume(24h)</div>
+					<div>BTC Trading Volume (24h)</div>
 					<div>Country</div>
 					<div>Year Established</div>
 				</div>

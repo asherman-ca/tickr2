@@ -92,3 +92,13 @@
 	width: 25px;
 	border-radius: 25%;
 }
+
+.volumeDiv {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.volumeDiv i {
+	color: #f7931a;
+}

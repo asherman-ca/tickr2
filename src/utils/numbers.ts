@@ -48,6 +48,15 @@ export const numParse2 = (num: number) => {
 	}
 };
 
+export const numParse3 = (num: number) => {
+	const f = Intl.NumberFormat('en-us', {
+		maximumFractionDigits: 2,
+		minimumFractionDigits: 2,
+	});
+
+	return f.format(num);
+};
+
 export const moneyParse2 = (num: number) => {
 	const f = Intl.NumberFormat('en-us', {
 		currency: 'USD',
