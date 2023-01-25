@@ -13,6 +13,7 @@ import SignUp from './pages/Auth/SignUp';
 import Exchange from './pages/Exchange/Exchange';
 import Exchanges from './pages/Exchanges/Exchanges';
 import './App.css';
+import Profile from './pages/Profile/Profile';
 
 function App() {
 	return (
@@ -28,7 +29,7 @@ function App() {
 						<Route path='/coins/:coinId' element={<CoinView />} />
 						<Route path='/exchanges' element={<Exchanges />} />
 						<Route element={<ProtectedRoute />}>
-							<Route path='/profile' element={<h1>profile</h1>} />
+							<Route path='/profile' element={<Profile />} />
 							<Route path='/exchange' element={<Exchange />} />
 						</Route>
 						<Route path='*' element={<Navigate to='/' />} />
