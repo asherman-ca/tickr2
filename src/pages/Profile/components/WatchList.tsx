@@ -23,47 +23,53 @@ const WatchList = ({ coins }: any) => {
 				<div>Volume</div>
 			</div>
 			{coins &&
-				Object.values(coins).map((coin: any) => {
-					return (
-						<Link
-							className={`${watchListItem}`}
-							to={`/coins/${coin.id}`}
-							key={coin.id}
-						>
-							<div>
-								<img src={coin.image.thumb} alt='' />
-								{coin.name}
-							</div>
-							<div>{moneyParse(coin.market_data.current_price.usd)}</div>
-							<div
-								className={classNamer(
-									coin.market_data.price_change_percentage_1h_in_currency.usd
-								)}
+				Object.values(coins)
+					.sort((a, b) => {
+						return (
+							b.market_data.current_price.usd - a.market_data.current_price.usd
+						);
+					})
+					.map((coin: any) => {
+						return (
+							<Link
+								className={`${watchListItem}`}
+								to={`/coins/${coin.id}`}
+								key={coin.id}
 							>
-								{numParse3(
-									coin.market_data.price_change_percentage_1h_in_currency.usd
-								)}
-								%
-							</div>
-							<div
-								className={classNamer(
-									coin.market_data.price_change_percentage_24h
-								)}
-							>
-								{numParse3(coin.market_data.price_change_percentage_24h)}%
-							</div>
-							<div
-								className={classNamer(
-									coin.market_data.price_change_percentage_7d
-								)}
-							>
-								{numParse3(coin.market_data.price_change_percentage_7d)}%
-							</div>
-							<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
-							<div>{moneyParse(coin.market_data.total_volume.usd)}</div>
-						</Link>
-					);
-				})}
+								<div>
+									<img src={coin.image.thumb} alt='' />
+									{coin.name}
+								</div>
+								<div>{moneyParse(coin.market_data.current_price.usd)}</div>
+								<div
+									className={classNamer(
+										coin.market_data.price_change_percentage_1h_in_currency.usd
+									)}
+								>
+									{numParse3(
+										coin.market_data.price_change_percentage_1h_in_currency.usd
+									)}
+									%
+								</div>
+								<div
+									className={classNamer(
+										coin.market_data.price_change_percentage_24h
+									)}
+								>
+									{numParse3(coin.market_data.price_change_percentage_24h)}%
+								</div>
+								<div
+									className={classNamer(
+										coin.market_data.price_change_percentage_7d
+									)}
+								>
+									{numParse3(coin.market_data.price_change_percentage_7d)}%
+								</div>
+								<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
+								<div>{moneyParse(coin.market_data.total_volume.usd)}</div>
+							</Link>
+						);
+					})}
 		</div>
 	);
 };
