@@ -1,13 +1,83 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
+import {
+	query,
+	where,
+	collection,
+	getDocs,
+	orderBy,
+	doc,
+	getDoc,
+} from 'firebase/firestore';
+
+import { calcPNL } from '../../utils/account';
+import { db } from '../../firebase.config';
+import { UserAuth } from '../../context/AuthContext';
+import { CoinsData } from '../../context/CoinContext';
 import Assets from './components/Assets';
 import WatchList from './components/WatchList';
-
 import styles from './Profile.module.css';
 const { profileContainer, tableTopMenu, active } = styles;
 
 const Profile = () => {
+	const { user } = UserAuth();
+	const { coins, loading } = CoinsData();
+	const [pageLoading, setPageLoading] = useState(true);
 	const [pageType, setPageType] = useState('watchlist');
+	const [pnl, setPnl] = useState();
+	const [userLikes, setUserLikes] = useState();
+	const [userData, setUserData] = useState();
+
+	useEffect(() => {
+		if (!loading && user) {
+			const fetchTask = async () => {
+				// fetch orders and calc PNL
+				const ordersRef = collection(db, 'orders');
+				const q = query(
+					ordersRef,
+					where('userRef', '==', user.uid),
+					orderBy('timestamp', 'desc')
+				);
+				const snap = await getDocs(q);
+				let orders = [] as any;
+				snap.forEach((doc) => {
+					return orders.push({ data: doc.data(), id: doc.id });
+				});
+				setPnl(calcPNL(orders, coins));
+
+				// fetch user info
+				const usersRef = doc(db, 'users', user.uid);
+				const docSnap = (await getDoc(usersRef)) as any;
+				setUserData(docSnap.data());
+
+				// fetch likes and match coin data into an object
+				const likesRef = collection(db, 'likes');
+				const q2 = query(likesRef, where('userRef', '==', user.uid));
+				const querySnap = await getDocs(q2);
+				let likesCopy = {} as any;
+				querySnap.forEach((el) => (likesCopy[el.data().coinId] = el.data()));
+				coins.forEach((coin) => {
+					if (likesCopy[coin.id]) {
+						likesCopy[coin.id] = { ...coin };
+					}
+				});
+				setUserLikes(likesCopy);
+
+				setPageLoading(false);
+			};
+
+			fetchTask();
+		}
+	}, [loading, user]);
+
+	if (loading) {
+		return (
+			<div className={`${profileContainer} container`}>
+				<Spinner />
+			</div>
+		);
+	}
 
 	return (
 		<div className={`${profileContainer} container`}>
