@@ -71,3 +71,11 @@ export const moneyParse2 = (num: number) => {
 
 	return f.format(num);
 };
+
+export const classNamer = (num: number) => {
+	if (num > 0) {
+		return 'pos';
+	} else {
+		return 'neg';
+	}
+};

@@ -34,3 +34,28 @@
 .active {
 	color: var(--clr-blue);
 }
+
+/* watchlist */
+
+.watchList {
+	display: flex;
+	flex-direction: column;
+}
+
+.watchList > div {
+	display: flex;
+	align-items: center;
+}
+
+.watchList > div > div {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.watchList > div > div:first-child {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 0.25rem;
+}
