@@ -132,7 +132,7 @@ const NavMenu = () => {
 							<i className='fa-solid fa-flask'></i>Testnet
 						</div>
 						<div onClick={() => navigate('/profile')}>
-							<i className='fa-solid fa-user-astronaut'></i>Account
+							<i className='fa-solid fa-user-astronaut'></i>Profile
 						</div>
 						<div
 							style={{

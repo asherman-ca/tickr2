@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
 	moneyParse,
@@ -7,21 +8,33 @@ import {
 	numParse3,
 } from '../../../utils/numbers';
 import styles from '../Profile.module.css';
-const { watchList } = styles;
+const { watchList, watchListItem } = styles;
 
 const WatchList = ({ coins }: any) => {
 	return (
 		<div className={`${watchList}`}>
-			<div></div>
+			<div>
+				<div>Name</div>
+				<div>Price</div>
+				<div>1h %</div>
+				<div>24h %</div>
+				<div>7d %</div>
+				<div>Market Cap</div>
+				<div>Volume</div>
+			</div>
 			{coins &&
 				Object.values(coins).map((coin: any) => {
 					return (
-						<div key={coin.id}>
+						<Link
+							className={`${watchListItem}`}
+							to={`/coins/${coin.id}`}
+							key={coin.id}
+						>
 							<div>
-								{coin.name}
 								<img src={coin.image.thumb} alt='' />
+								{coin.name}
 							</div>
-							<div>{coin.market_data.current_price.usd}</div>
+							<div>{moneyParse(coin.market_data.current_price.usd)}</div>
 							<div
 								className={classNamer(
 									coin.market_data.price_change_percentage_1h_in_currency.usd
@@ -48,7 +61,7 @@ const WatchList = ({ coins }: any) => {
 							</div>
 							<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
 							<div>{moneyParse(coin.market_data.total_volume.usd)}</div>
-						</div>
+						</Link>
 					);
 				})}
 		</div>

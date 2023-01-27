@@ -44,18 +44,41 @@
 
 .watchList > div {
 	display: flex;
-	align-items: center;
 }
 
 .watchList > div > div {
+	padding: 1rem 0;
+
+	flex-basis: 100%;
+	display: flex;
+	justify-content: flex-end;
+
+	font-weight: 500;
+	border-top: 0.5px solid var(--grey-border);
+	border-bottom: 0.5px solid var(--grey-border);
+}
+
+.watchList > div > div:first-child {
+	justify-content: flex-start;
+}
+
+.watchListItem {
+	padding: 1rem 0;
+
+	display: flex;
+	align-items: center;
+	border-bottom: 0.5px solid var(--grey-border);
+}
+
+.watchListItem > div {
 	flex-basis: 100%;
 	display: flex;
 	justify-content: flex-end;
 }
 
-.watchList > div > div:first-child {
+.watchListItem > div:first-child {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 0.25rem;
+	gap: 1rem;
 }
