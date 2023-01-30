@@ -108,7 +108,11 @@ const Profile = () => {
 						<button>Logout</button>
 					</div>
 				</div>
-				{pageType == 'watchlist' ? <WatchList coins={userLikes} /> : <Assets />}
+				{pageType == 'watchlist' ? (
+					<WatchList coins={userLikes} />
+				) : (
+					<Assets coins={pnl} />
+				)}
 			</div>
 		</div>
 	);

@@ -24,7 +24,7 @@ const WatchList = ({ coins }: any) => {
 			</div>
 			{coins &&
 				Object.values(coins)
-					.sort((a, b) => {
+					.sort((a: any, b: any) => {
 						return (
 							b.market_data.current_price.usd - a.market_data.current_price.usd
 						);
