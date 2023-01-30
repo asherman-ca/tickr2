@@ -21,7 +21,7 @@ export const moneyParse = (num: number) => {
 		}
 		return num.toLocaleString('en-US', options);
 	} else {
-		return 0;
+		return `$0.00`;
 	}
 };
 
@@ -75,7 +75,7 @@ export const moneyParse2 = (num: number) => {
 export const classNamer = (num: number) => {
 	if (num > 0) {
 		return 'pos';
-	} else {
+	} else if (num < 0) {
 		return 'neg';
 	}
 };
