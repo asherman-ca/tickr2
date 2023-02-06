@@ -76,7 +76,7 @@ const Exchanges = () => {
 						<div>Exchange</div>
 					</div>
 					<div>Score</div>
-					<div>BTC Trading Volume (24h)</div>
+					<div>24h BTC Volume</div>
 					<div>Country</div>
 					<div>Year Established</div>
 				</div>

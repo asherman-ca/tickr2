@@ -47,7 +47,7 @@
 }
 
 .tableHeader > div:first-child > div:last-child {
-	flex: 8;
+	flex: 5;
 }
 
 :is(.tableHeader, .exchangeItemDiv) > div:nth-child(-n + 1) {
@@ -80,7 +80,7 @@
 }
 
 .exchangeItemTitle {
-	flex: 8;
+	flex: 5;
 
 	display: flex;
 	align-items: center;
@@ -101,4 +101,22 @@
 
 .volumeDiv i {
 	color: #f7931a;
+}
+
+@media (max-width: 900px) {
+	.tableHeader > div:nth-last-child(-n + 1) {
+		display: none;
+	}
+	.exchangeItemDiv > div:nth-last-child(-n + 1) {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.tableHeader > div:nth-last-child(-n + 3) {
+		display: none;
+	}
+	.exchangeItemDiv > div:nth-last-child(-n + 3) {
+		display: none;
+	}
 }
