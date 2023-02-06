@@ -37,7 +37,7 @@ export const CoinContextProvider = ({ children }: any) => {
 				setCoins(responses[0]);
 				setGlobal(responses[1]);
 			} catch (error) {
-				console.log(error);
+				console.log('COIN CONTEXT FETCH ERROR:', error);
 			}
 			setLoading(false);
 		};

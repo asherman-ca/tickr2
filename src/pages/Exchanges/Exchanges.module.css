@@ -22,6 +22,7 @@
 
 .exchangesContainer header > div:last-child {
 	color: var(--grey-text);
+	line-height: 1.5rem;
 }
 
 .table > div:first-child {

@@ -94,3 +94,11 @@
 
 	cursor: pointer;
 }
+
+@media (max-width: 600px) {
+	.auth {
+		width: 90%;
+		max-height: 90%;
+		padding: 3rem 2rem;
+	}
+}
