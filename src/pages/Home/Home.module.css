@@ -84,6 +84,11 @@
 	transform: scale(0.9);
 }
 
+.trendingCoin img {
+	height: 25px;
+	width: 25px;
+}
+
 .body {
 	width: 100%;
 	display: flex;
@@ -199,6 +204,11 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.coinItemTitle img {
+	height: 25px;
+	width: 25px;
 }
 
 @media screen and (max-width: 768px) {

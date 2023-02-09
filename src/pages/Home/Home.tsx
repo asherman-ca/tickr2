@@ -16,7 +16,6 @@ const home = () => {
 	const { user } = UserAuth();
 	const [userLikes, setUserLikes] = useState([]);
 	const [likeLoading, setLikeLoading] = useState(true);
-	const [pageCoin, setPageCoins] = useState([]);
 
 	useEffect(() => {
 		const apiFetch = async () => {
@@ -27,27 +26,13 @@ const home = () => {
 				let likes: any = [];
 				querySnap.forEach((el) => likes.push(el.data().coinId));
 				setUserLikes(likes);
+			} else {
+				setUserLikes([]);
 			}
 			setLikeLoading(false);
 		};
 		apiFetch();
 	}, [user]);
-
-	useEffect(() => {
-		const apiFetch = async () => {
-			console.log('page coin fetch hits');
-			const ref = await fetch(
-				`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&price_change_percentage=1h,24h,7d`
-			);
-			if (!ref.ok) {
-				throw new Error('Thrown Error Thrown');
-			}
-			const response = await ref.json();
-			console.log('res', response);
-			setPageCoins(response);
-		};
-		apiFetch();
-	}, []);
 
 	if (loading || user == false || likeLoading) {
 		return (

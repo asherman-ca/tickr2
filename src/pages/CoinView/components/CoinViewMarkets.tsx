@@ -1,10 +1,8 @@
-import React from 'react';
 import CoinViewTickerItem from './CoinViewTickerItem';
 import styles from '../CoinView.module.css';
 const { tickers, marketsHeader, marketsTable } = styles;
 
 const CoinViewMarkets = ({ markets, title }: any) => {
-	console.log('markets', markets);
 	return (
 		<div className={`${tickers}`}>
 			<div>{`${title} Markets`}</div>
@@ -19,7 +17,13 @@ const CoinViewMarkets = ({ markets, title }: any) => {
 					<div>Volume</div>
 				</div>
 				{markets.map((market: any, index: number) => {
-					return <CoinViewTickerItem market={market} position={index + 1} />;
+					return (
+						<CoinViewTickerItem
+							key={`${market.market.name} ${market.base} ${market.target}}`}
+							market={market}
+							position={index + 1}
+						/>
+					);
 				})}
 			</div>
 		</div>

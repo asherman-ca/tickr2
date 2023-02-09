@@ -23,8 +23,11 @@ export const CoinContextProvider = ({ children }: any) => {
 	useEffect(() => {
 		const makeApiCalls = async () => {
 			try {
+				// const coinsRef = await fetch(
+				// 	`https://api.coingecko.com/api/v3/coins?per_page=200`
+				// );
 				const coinsRef = await fetch(
-					`https://api.coingecko.com/api/v3/coins?per_page=200`
+					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&price_change_percentage=1h,24h,7d,30d`
 				);
 				const globalRef = await fetch(
 					`https://api.coingecko.com/api/v3/global`

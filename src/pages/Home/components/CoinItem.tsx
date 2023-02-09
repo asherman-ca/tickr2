@@ -25,32 +25,25 @@ const CoinItem = ({ coin }: CoinItemProps) => {
 					<i
 						className={`${coin.liked ? `fa-solid gold` : `fa-regular`} fa-star`}
 					></i>
-					{coin.market_data.market_cap_rank}
+					{coin.market_cap_rank}
 				</div>
 				<div>
-					<img src={coin.image.thumb} alt='' />
+					<img src={coin.image} alt='' />
 					{coin.name}
 				</div>
 			</div>
-			<div>{moneyParse(coin.market_data.current_price.usd)}</div>
-			<div
-				className={classNamer(
-					coin.market_data.price_change_percentage_1h_in_currency.usd
-				)}
-			>
-				{numberParse(
-					coin.market_data.price_change_percentage_1h_in_currency.usd
-				)}
-				%
+			<div>{moneyParse(coin.current_price)}</div>
+			<div className={classNamer(coin.price_change_percentage_1h_in_currency)}>
+				{numberParse(coin.price_change_percentage_1h_in_currency)}%
 			</div>
-			<div className={classNamer(coin.market_data.price_change_percentage_24h)}>
-				{numberParse(coin.market_data.price_change_percentage_24h)}%
+			<div className={classNamer(coin.price_change_percentage_24h)}>
+				{numberParse(coin.price_change_percentage_24h)}%
 			</div>
-			<div className={classNamer(coin.market_data.price_change_percentage_7d)}>
-				{numberParse(coin.market_data.price_change_percentage_7d)}%
+			<div className={classNamer(coin.price_change_percentage_7d_in_currency)}>
+				{numberParse(coin.price_change_percentage_7d_in_currency)}%
 			</div>
-			<div>{moneyParse(coin.market_data.market_cap.usd)}</div>
-			<div>{moneyParse(coin.market_data.total_volume.usd)}</div>
+			<div>{moneyParse(coin.market_cap)}</div>
+			<div>{moneyParse(coin.total_volume)}</div>
 		</Link>
 	);
 };

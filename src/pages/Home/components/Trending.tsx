@@ -17,14 +17,14 @@ const Trending = ({ coins }: TrendingPropsType) => {
 				coins={coins
 					.sort(
 						(a, b) =>
-							Math.abs(b.market_data.price_change_percentage_24h) -
-							Math.abs(a.market_data.price_change_percentage_24h)
+							Math.abs(b.price_change_percentage_24h) -
+							Math.abs(a.price_change_percentage_24h)
 					)
 					.map((coin) => {
 						return {
 							name: coin.name,
-							changeVal: coin.market_data.price_change_percentage_24h,
-							image: coin.image.thumb,
+							changeVal: coin.price_change_percentage_24h,
+							image: coin.image,
 						};
 					})
 					.slice(0, 5)}
@@ -35,14 +35,14 @@ const Trending = ({ coins }: TrendingPropsType) => {
 				coins={coins
 					.sort(
 						(a, b) =>
-							Math.abs(b.market_data.price_change_percentage_7d) -
-							Math.abs(a.market_data.price_change_percentage_7d)
+							Math.abs(b.price_change_percentage_7d_in_currency) -
+							Math.abs(a.price_change_percentage_7d_in_currency)
 					)
 					.map((coin) => {
 						return {
 							name: coin.name,
-							changeVal: coin.market_data.price_change_percentage_7d,
-							image: coin.image.thumb,
+							changeVal: coin.price_change_percentage_7d_in_currency,
+							image: coin.image,
 						};
 					})
 					.slice(0, 5)}
@@ -53,14 +53,14 @@ const Trending = ({ coins }: TrendingPropsType) => {
 				coins={coins
 					.sort(
 						(a, b) =>
-							Math.abs(b.market_data.price_change_percentage_30d) -
-							Math.abs(a.market_data.price_change_percentage_30d)
+							Math.abs(b.price_change_percentage_30d_in_currency) -
+							Math.abs(a.price_change_percentage_30d_in_currency)
 					)
 					.map((coin) => {
 						return {
 							name: coin.name,
-							changeVal: coin.market_data.price_change_percentage_30d,
-							image: coin.image.thumb,
+							changeVal: coin.price_change_percentage_30d_in_currency,
+							image: coin.image,
 						};
 					})
 					.slice(0, 5)}

@@ -1,10 +1,14 @@
 export type coin = {
 	id: string;
-	image: {
-		thumb: string;
-		small: string;
-		large: string;
-	};
+	image: string;
+	market_cap_rank: string;
+	price_change_percentage_24h: number;
+	price_change_percentage_7d_in_currency: number;
+	price_change_percentage_30d_in_currency: number;
+	price_change_percentage_1h_in_currency: number;
+	current_price: number;
+	market_cap: number;
+	total_volume: number;
 	market_data: {
 		price_change_percentage_24h: number;
 		price_change_percentage_7d: number;
