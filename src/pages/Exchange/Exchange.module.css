@@ -42,6 +42,12 @@
 	/* overflow-y: auto; */
 }
 
+:is(.orderHistoryTable, .pnlTable) img {
+	height: 25px;
+	width: 25px;
+	border-radius: 25%;
+}
+
 :is(.orderHistoryTable, .pnlTable) {
 	overflow-y: auto;
 }
@@ -98,6 +104,8 @@
 
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 :is(.orderItem, .pnlItem) > div:first-child {

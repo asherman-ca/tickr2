@@ -17,7 +17,10 @@ const AssetTable = ({ pnl }: any) => {
 			{pnl.map((asset: any) => {
 				return (
 					<div className={`${pnlItem}`} key={asset.coin}>
-						<div>{asset.coin}</div>
+						<div>
+							<img src={asset.image} alt='' />
+							{asset.coin}
+						</div>
 						<div>{moneyParse(asset.totalValue)}</div>
 						<div
 							className={`${asset.pnl > 0 && 'pos'} ${asset.pnl < 0 && 'neg'}`}

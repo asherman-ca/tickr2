@@ -23,7 +23,10 @@ const OrderTable = ({ orders }: orderTableProps) => {
 				orders.map((order: order) => {
 					return (
 						<div className={`${orderItem}`} key={order.id}>
-							<div>{order.data.coin}</div>
+							<div>
+								<img src={order.data.image} alt='' />
+								{order.data.coin}
+							</div>
 							<div>{moneyParse(order.data.spent)}</div>
 							<div className={order.data.type === 'buy' ? 'pos' : 'neg'}>
 								{order.data.type}

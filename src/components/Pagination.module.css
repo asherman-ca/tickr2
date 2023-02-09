@@ -47,9 +47,10 @@
 }
 
 .pageButton {
-	padding: 0.5rem;
+	padding: 0.5rem 0.75rem;
 
 	border-radius: 25%;
+	font-weight: 500;
 }
 
 .pageButton:hover {
@@ -58,12 +59,12 @@
 
 .active {
 	/* font-weight: bold; */
-	background: blue;
+	background: var(--clr-cmcblue);
 	color: white;
 }
 
 .active:hover {
-	background: blue;
+	background: var(--clr-cmcblue);
 }
 
 .dots {

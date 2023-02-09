@@ -25,6 +25,7 @@ const Trending = ({ coins }: TrendingPropsType) => {
 							name: coin.name,
 							changeVal: coin.price_change_percentage_24h,
 							image: coin.image,
+							id: coin.id,
 						};
 					})
 					.slice(0, 5)}
@@ -43,6 +44,7 @@ const Trending = ({ coins }: TrendingPropsType) => {
 							name: coin.name,
 							changeVal: coin.price_change_percentage_7d_in_currency,
 							image: coin.image,
+							id: coin.id,
 						};
 					})
 					.slice(0, 5)}
@@ -61,6 +63,7 @@ const Trending = ({ coins }: TrendingPropsType) => {
 							name: coin.name,
 							changeVal: coin.price_change_percentage_30d_in_currency,
 							image: coin.image,
+							id: coin.id,
 						};
 					})
 					.slice(0, 5)}

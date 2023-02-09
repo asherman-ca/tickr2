@@ -75,7 +75,7 @@ const calcPNL = (orders: order[], coins: coin[]) => {
 		if (coins?.filter((coin: any) => coin.name === account.coin).length > 0) {
 			const currentPrice = coins?.filter(
 				(coin: any) => coin.name === account.coin
-			)[0].market_data.current_price.usd;
+			)[0].current_price;
 
 			PNL.push({
 				coin: account.coin,

@@ -79,7 +79,7 @@ const ExchangeForm = ({
 				</div>
 				<div className={`${buttonRow}`}>
 					<button
-						className='blue-button'
+						className='blue-button exchange-form-button'
 						onClick={(e) => {
 							onOrder(
 								e,

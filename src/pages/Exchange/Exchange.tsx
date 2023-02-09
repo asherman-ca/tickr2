@@ -9,6 +9,7 @@ import {
 	getDoc,
 } from 'firebase/firestore';
 
+import { CoinsData } from '../../context/CoinContext';
 import { db } from '../../firebase.config';
 import Spinner from '../../components/Spinner';
 import ExchangeForm from './components/ExchangeForm';
@@ -27,6 +28,7 @@ import AssetTable from './components/AssetTable';
 import { order } from '../../utils/types';
 
 const Exchange = () => {
+	// const { coins, coinsLoading, global } = CoinsData();
 	const { user } = UserAuth();
 	const [loading, setLoading] = useState(true);
 	const [coins, setCoins] = useState();
@@ -62,7 +64,7 @@ const Exchange = () => {
 				// task 2
 
 				const ref = await fetch(
-					`https://api.coingecko.com/api/v3/coins?per_page=30`
+					`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&price_change_percentage=1h,24h,7d,30d`
 				);
 				if (!ref.ok) {
 					setLoading(true);
@@ -71,13 +73,15 @@ const Exchange = () => {
 				const response = await ref.json();
 				setCoins(response);
 
+				console.log('res', response);
+
 				setFormData((prev) => ({
 					...prev,
 					coin: response[0].name,
-					price: response[0].market_data.current_price.usd,
+					price: response[0].current_price,
 					coinId: response[0].id,
-					image: response[0].image.small,
-					imageLarge: response[0].image.large,
+					image: response[0].image,
+					imageLarge: response[0].image,
 					userRef: user.uid,
 				}));
 

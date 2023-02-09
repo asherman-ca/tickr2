@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-
 import { coin } from '../../../utils/types';
 import { moneyParse, numberParse } from '../../../utils/numbers';
-import styles from '../Home.module.css';
 const { coinItem, coinItemTitle } = styles;
+import styles from '../Home.module.css';
 
 type CoinItemProps = {
 	coin: coin;
