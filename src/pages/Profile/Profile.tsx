@@ -18,7 +18,7 @@ import { CoinsData } from '../../context/CoinContext';
 import Assets from './components/Assets';
 import WatchList from './components/WatchList';
 import styles from './Profile.module.css';
-const { profileContainer, tableTopMenu, active } = styles;
+const { profileContainer, tableTopMenu, active, logoutButton } = styles;
 
 const Profile = () => {
 	const { user } = UserAuth();
@@ -105,7 +105,7 @@ const Profile = () => {
 						<Link to={pageType == 'watchlist' ? '/' : '/exchange'}>
 							Add Coins
 						</Link>
-						<button>Logout</button>
+						<button className={`${logoutButton}`}>Logout</button>
 					</div>
 				</div>
 				{pageType == 'watchlist' ? (

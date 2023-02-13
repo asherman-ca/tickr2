@@ -155,4 +155,12 @@
 	:is(.watchList, .assetTable) > :is(a, div) > *:nth-last-child(-n + 4) {
 		display: none;
 	}
+
+	.watchList > :is(div, a) > *:nth-child(3) {
+		display: none;
+	}
+
+	.logoutButton {
+		display: none;
+	}
 }
