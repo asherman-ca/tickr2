@@ -116,6 +116,7 @@
 	justify-content: flex-end;
 
 	font-weight: 500;
+	gap: 0.5rem;
 	/* font-size: 1.1rem; */
 }
 
@@ -196,4 +197,43 @@
 
 .coinViewDesc > div:last-child {
 	line-height: 2rem;
+}
+
+@media (max-width: 1200px) {
+	.coinSurHeader > *:nth-last-child(-n + 2) {
+		display: none;
+	}
+}
+
+@media (max-width: 900px) {
+	.coinSurHeader > *:nth-last-child(-n + 3) {
+		display: none;
+	}
+
+	.marketsHeader > *:nth-last-child(-n + 1) {
+		display: none;
+	}
+	.tickerItem > *:nth-last-child(-n + 1) {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.coinSurHeader > *:nth-last-child(-n + 5) {
+		display: none;
+	}
+
+	.marketsHeader > *:nth-last-child(-n + 1) {
+		display: none;
+	}
+	.marketsHeader > *:nth-child(2) {
+		display: none;
+	}
+
+	.tickerItem > *:nth-last-child(-n + 1) {
+		display: none;
+	}
+	.tickerItem > *:nth-child(2) {
+		display: none;
+	}
 }
