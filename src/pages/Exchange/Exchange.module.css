@@ -261,4 +261,12 @@
 		> *:nth-last-child(-n + 2) {
 		display: none;
 	}
+
+	:is(.orderItem, .orderHistoryTable header) > *:nth-child(2) {
+		display: none;
+	}
+
+	:is(.pnlItem, .pnlTable header) > *:nth-child(3) {
+		display: none;
+	}
 }
