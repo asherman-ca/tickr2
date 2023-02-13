@@ -74,7 +74,7 @@ const Profile = () => {
 		}
 	}, [loading, user]);
 
-	if (loading) {
+	if (loading || pageLoading) {
 		return (
 			<div className={`${profileContainer} container`}>
 				<Spinner />

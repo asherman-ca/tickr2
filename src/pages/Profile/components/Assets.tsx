@@ -1,9 +1,13 @@
 import styles from '../Profile.module.css';
 const { assetTable, assetItem } = styles;
-import { moneyParse, numParse3, classNamer } from '../../../utils/numbers';
+import {
+	moneyParse,
+	numParse3,
+	classNamer,
+	moneyParse2,
+} from '../../../utils/numbers';
 
 const Assets = ({ coins }: any) => {
-	console.log('asset coins', coins);
 	return (
 		<div className={`${assetTable}`}>
 			<div>
@@ -14,9 +18,9 @@ const Assets = ({ coins }: any) => {
 				<div>Coins</div>
 				<div>Average Price</div>
 			</div>
-			{coins.map((coin: any) => {
+			{coins.map((coin: any, index: number) => {
 				return (
-					<div className={`${assetItem}`}>
+					<div className={`${assetItem}`} key={`${coin.id} + ${index}`}>
 						<div>
 							<img src={coin.image} alt='' />
 							{coin.coin}
@@ -26,7 +30,7 @@ const Assets = ({ coins }: any) => {
 							{moneyParse(coin.rpnl)}
 						</div>
 						<div className={`${classNamer(coin.pnl)}`}>
-							{moneyParse(coin.pnl)}
+							{moneyParse2(coin.pnl)}
 						</div>
 						<div>{numParse3(coin.totalCoins)}</div>
 						<div>{moneyParse(coin.averagePrice)}</div>

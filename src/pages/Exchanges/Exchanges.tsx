@@ -80,8 +80,8 @@ const Exchanges = () => {
 					<div>Country</div>
 					<div>Year Established</div>
 				</div>
-				{exchanges.map((exchange) => {
-					return <ExchangeItem exchange={exchange} />;
+				{exchanges.map((exchange: any) => {
+					return <ExchangeItem exchange={exchange} key={exchange.id} />;
 				})}
 			</div>
 		</div>
