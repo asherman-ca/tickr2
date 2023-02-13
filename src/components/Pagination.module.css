@@ -75,3 +75,12 @@
 .pageScrollButton {
 	margin: 0 1rem;
 }
+
+@media (max-width: 600px) {
+	:is(.showRows) {
+		display: none !important;
+	}
+	.pagination > div:first-child {
+		display: none;
+	}
+}
