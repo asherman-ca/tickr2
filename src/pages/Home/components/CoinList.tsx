@@ -22,6 +22,7 @@ const CoinList = ({ coins, loading, userLikes }: CoinListProps) => {
 		type: 'mcap',
 		direction: 'desc',
 	});
+	console.log('coins', coins);
 	const displayCoins = displayCoinsMemo(coins, loading, sortParam, userLikes);
 	const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[1]);
 	const [currentPage, setCurrentPage] = useState<number>(1);

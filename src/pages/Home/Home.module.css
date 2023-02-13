@@ -1,6 +1,5 @@
 .homeContainer {
 	padding: 2rem 3rem;
-
 	/* gap: 2rem; */
 
 	/* overflow-y hidden will be key for the exchange page */
@@ -9,8 +8,6 @@
 }
 
 .header {
-	/* margin-bottom: 2rem; */
-
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
@@ -18,8 +15,6 @@
 }
 
 .subHeader {
-	/* display: flex;
-	align-items: center; */
 	display: block;
 
 	color: var(--grey-text);
@@ -27,8 +22,6 @@
 }
 
 .trending {
-	/* margin-bottom: 1rem; */
-
 	display: flex;
 	gap: 1rem;
 }

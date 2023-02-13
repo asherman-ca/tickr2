@@ -32,11 +32,17 @@ export const displayCoinsMemo = (
 		} else if (type === '7d') {
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
-					return b.price_change_percentage_7d - a.price_change_percentage_7d;
+					return (
+						b.price_change_percentage_7d_in_currency -
+						a.price_change_percentage_7d_in_currency
+					);
 				});
 			} else {
 				return coins.sort((a, b) => {
-					return a.price_change_percentage_7d - b.price_change_percentage_7d;
+					return (
+						a.price_change_percentage_7d_in_currency -
+						b.price_change_percentage_7d_in_currency
+					);
 				});
 			}
 		} else if (type === '24hr') {
@@ -53,26 +59,26 @@ export const displayCoinsMemo = (
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
 					return (
-						b.price_change_percentage_1h_in_currency.usd -
-						a.price_change_percentage_1h_in_currency.usd
+						b.price_change_percentage_1h_in_currency -
+						a.price_change_percentage_1h_in_currency
 					);
 				});
 			} else {
 				return coins.sort((a, b) => {
 					return (
-						a.price_change_percentage_1h_in_currency.usd -
-						b.price_change_percentage_1h_in_currency.usd
+						a.price_change_percentage_1h_in_currency -
+						b.price_change_percentage_1h_in_currency
 					);
 				});
 			}
 		} else if (type === 'volume') {
 			if (direction === 'desc') {
 				return coins.sort((a, b) => {
-					return b.total_volume.usd - a.total_volume.usd;
+					return b.total_volume - a.total_volume;
 				});
 			} else {
 				return coins.sort((a, b) => {
-					return a.total_volume.usd - b.total_volume.usd;
+					return a.total_volume - b.total_volume;
 				});
 			}
 		}
