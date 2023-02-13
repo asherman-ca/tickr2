@@ -59,7 +59,7 @@ const Nav = () => {
 								onClick={() => onSuggestedClick(coin.id)}
 								key={coin.id}
 							>
-								<img src={coin.image.thumb} alt='' />
+								<img src={coin.image} alt='' />
 								<div>{coin.name}</div>
 							</div>
 						))}
