@@ -210,8 +210,32 @@
 	width: 25px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 1200px) {
+	.coinListHeader > *:nth-last-child(-n + 2) {
+		display: none;
+	}
+	.coinItem > *:nth-last-child(-n + 2) {
+		display: none;
+	}
+}
+
+@media (max-width: 900px) {
 	.trending {
 		flex-direction: column;
+	}
+	.coinListHeader > *:nth-last-child(-n + 3) {
+		display: none;
+	}
+	.coinItem > *:nth-last-child(-n + 3) {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.coinListHeader > *:nth-last-child(-n + 5) {
+		display: none;
+	}
+	.coinItem > *:nth-last-child(-n + 5) {
+		display: none;
 	}
 }
