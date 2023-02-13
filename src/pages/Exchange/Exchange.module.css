@@ -251,10 +251,14 @@
 		overflow-y: auto;
 	}
 	:is(.orderItem, .pnlItem, .orderHistoryTable header, .pnlTable header)
-		> *:nth-last-child(-n + 2) {
+		> *:nth-last-child(-n + 1) {
 		display: none;
 	}
 }
 
 @media (max-width: 600px) {
+	:is(.orderItem, .pnlItem, .orderHistoryTable header, .pnlTable header)
+		> *:nth-last-child(-n + 2) {
+		display: none;
+	}
 }
