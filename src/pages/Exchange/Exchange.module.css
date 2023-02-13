@@ -3,7 +3,7 @@
 	flex-basis: 100%;
 
 	display: flex;
-	flex-direction: row !important;
+	flex-direction: row;
 	gap: 2rem;
 
 	background: linear-gradient(
@@ -237,4 +237,24 @@
 .faucetForm button {
 	font-weight: 500;
 	color: var(--clr-blue);
+}
+
+@media (max-width: 1200px) {
+	.exchangeTables {
+		flex: 2 !important;
+	}
+}
+
+@media (max-width: 900px) {
+	.exchangeContainer {
+		flex-direction: column-reverse;
+		overflow-y: auto;
+	}
+	:is(.orderItem, .pnlItem, .orderHistoryTable header, .pnlTable header)
+		> *:nth-last-child(-n + 2) {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
 }
