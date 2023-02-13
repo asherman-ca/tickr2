@@ -2,14 +2,14 @@ import { doc, deleteDoc, collection, addDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
 import { db } from '../../firebase.config';
-import { coin, like } from '../../utils/types';
+import { coin, like, coinViewType } from '../../utils/types';
 
 export const onLike = async (
 	user: any,
 	setLikes: any,
 	setUserLike: any,
 	userLike: any,
-	coin: coin
+	coin: coinViewType
 ) => {
 	if (!user) {
 		toast.error('Must be logged in');

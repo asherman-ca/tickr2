@@ -11,13 +11,13 @@ import CoinViewHeader from './components/CoinViewHeader';
 import CoinViewMarkets from './components/CoinViewMarkets';
 const { coinView, coinViewDesc } = styles;
 import { onLike } from './CoinViewActions';
-import { coin } from '../../utils/types';
+import { coinViewType } from '../../utils/types';
 
 const CoinView = () => {
 	const { user } = UserAuth();
 	const params = useParams();
 
-	const [coin, setCoin] = useState({} as coin);
+	const [coin, setCoin] = useState({} as coinViewType);
 	const [loading, setLoading] = useState(true);
 	const [userLike, setUserLike] = useState();
 	const [likes, setLikes] = useState([]);

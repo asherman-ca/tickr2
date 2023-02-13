@@ -47,6 +47,44 @@ export type coin = {
 	};
 };
 
+export type coinViewType = {
+	image: {
+		small: string;
+		thumb: string;
+	};
+	links: {
+		homepage: string[];
+		blockchain_site: string;
+		subreddit_url: string;
+		repos_url: {
+			github: string[];
+		};
+	};
+	name: string;
+	symbol: string;
+	market_data: {
+		current_price: {
+			usd: number;
+		};
+		price_change_percentage_24h: number;
+		price_change_percentage_7d: number;
+		ath_change_percentage: {
+			usd: number;
+		};
+		total_volume: {
+			usd: number;
+		};
+		market_cap: {
+			usd: number;
+		};
+	};
+	description: {
+		en: string;
+	};
+	tickers: any[];
+	id: any;
+};
+
 export type global = {
 	data: {
 		total_market_cap: {

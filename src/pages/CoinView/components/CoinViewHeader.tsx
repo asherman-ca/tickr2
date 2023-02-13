@@ -7,14 +7,14 @@ const {
 	surHeaderCol,
 	surHeaderName,
 } = styles;
-import { coin } from '../../../utils/types';
+import { coinViewType } from '../../../utils/types';
 import { moneyParse, numberParse } from '../../../utils/numbers';
 
 type coinHeaderProps = {
-	coin: coin;
+	coin: coinViewType;
 	userLike: any;
-	totalLikes: any;
-	onLike: any;
+	totalLikes: number;
+	onLike: () => void;
 };
 
 const CoinViewHeader = ({
