@@ -3,7 +3,7 @@
 	flex-basis: 100%;
 
 	display: flex;
-	flex-direction: row;
+	flex-direction: row-reverse;
 	gap: 2rem;
 
 	background: linear-gradient(
@@ -247,7 +247,7 @@
 
 @media (max-width: 900px) {
 	.exchangeContainer {
-		flex-direction: column-reverse;
+		flex-direction: column;
 		overflow-y: auto;
 	}
 	:is(.orderItem, .pnlItem, .orderHistoryTable header, .pnlTable header)

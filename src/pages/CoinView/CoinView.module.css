@@ -236,4 +236,8 @@
 	.tickerItem > *:nth-child(2) {
 		display: none;
 	}
+
+	.coinView {
+		padding: 1rem;
+	}
 }

@@ -117,16 +117,6 @@ const Exchange = () => {
 
 	return (
 		<div className={`${exchangeContainer}`}>
-			<div className={`${exchangeTables}`}>
-				<div className={`${transactions}`}>
-					<div>Order History</div>
-					<OrderTable orders={orders} />
-				</div>
-				<div className={`${assets}`}>
-					<div>Assets</div>
-					<AssetTable pnl={pnl} />
-				</div>
-			</div>
 			<div className={`${exchangeForms}`}>
 				<ExchangeForm
 					coins={coins}
@@ -139,6 +129,16 @@ const Exchange = () => {
 					formData={formData}
 					setFormData={setFormData}
 				/>
+			</div>
+			<div className={`${exchangeTables}`}>
+				<div className={`${transactions}`}>
+					<div>Order History</div>
+					<OrderTable orders={orders} />
+				</div>
+				<div className={`${assets}`}>
+					<div>Assets</div>
+					<AssetTable pnl={pnl} />
+				</div>
 			</div>
 		</div>
 	);
