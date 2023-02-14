@@ -101,6 +101,7 @@
 	}
 
 	.nav {
+		padding: 1rem;
 		gap: 1rem;
 	}
 }

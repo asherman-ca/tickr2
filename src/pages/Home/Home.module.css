@@ -234,4 +234,7 @@
 	.coinItem > *:nth-last-child(-n + 5) {
 		display: none;
 	}
+	.homeContainer {
+		padding: 1rem;
+	}
 }

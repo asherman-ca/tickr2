@@ -269,4 +269,7 @@
 	:is(.pnlItem, .pnlTable header) > *:nth-child(3) {
 		display: none;
 	}
+	.exchangeContainer {
+		padding: 1rem;
+	}
 }

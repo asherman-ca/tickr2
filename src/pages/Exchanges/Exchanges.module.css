@@ -121,4 +121,7 @@
 	.exchangeItemDiv > div:nth-last-child(-n + 3) {
 		display: none;
 	}
+	.exchangesContainer {
+		padding: 1rem;
+	}
 }

@@ -163,4 +163,8 @@
 	.logoutButton {
 		display: none;
 	}
+
+	.profileContainer {
+		padding: 1rem;
+	}
 }
